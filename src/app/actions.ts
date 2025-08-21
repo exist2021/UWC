@@ -8,9 +8,6 @@ export type ContactFormState = {
   success: boolean;
 };
 
-const resendApiKey = process.env.RESEND_API_KEY;
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
-
 export async function sendContactMessage(
   data: ContactFormValues
 ): Promise<ContactFormState> {
@@ -23,13 +20,17 @@ export async function sendContactMessage(
     };
   }
 
-  if (!resend) {
-    console.error("Resend is not configured. Missing RESEND_API_KEY.");
+  const resendApiKey = process.env.RESEND_API_KEY;
+
+  if (!resendApiKey) {
+    console.error("Resend API key is not configured. Missing RESEND_API_KEY from .env.local");
     return {
       success: false,
       message: "The email service is not configured correctly. Please contact the site administrator.",
     };
   }
+  
+  const resend = new Resend(resendApiKey);
 
   try {
     await resend.emails.send({
