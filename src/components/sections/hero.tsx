@@ -9,7 +9,7 @@ export default function Hero() {
         <div className="flex flex-col items-center space-y-6 text-center">
           <div className="space-y-4">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none font-headline">
-              Turning Your Vision Into Clear Messages
+              Giving Vision Solid Ground
             </h1>
             <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl">
               We help leaders translate their big ideas into language everyone can understand—and act on.
