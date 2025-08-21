@@ -1,11 +1,8 @@
 "use client";
 
-import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormValues } from "@/lib/schemas";
-import { sendContactMessage } from "@/app/actions";
-import { useToast } from "@/hooks/use-toast";
 import { 
   Form, 
   FormControl, 
@@ -18,12 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Loader2 } from "lucide-react";
 
 export function ContactForm() {
-  const [isPending, startTransition] = useTransition();
-  const { toast } = useToast();
-
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -35,28 +28,13 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(values: ContactFormValues) {
-    startTransition(async () => {
-      const result = await sendContactMessage(values);
-      if (result.success) {
-        toast({
-          title: "Message Sent!",
-          description: result.message,
-        });
-        form.reset();
-      } else {
-        toast({
-          title: "Error",
-          description: result.message,
-          variant: "destructive",
-        });
-      }
-    });
-  }
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form 
+        action="https://formsubmit.co/manoj@manojnayak.com" 
+        method="POST"
+        className="space-y-6"
+      >
         <FormField
           control={form.control}
           name="name"
@@ -124,13 +102,14 @@ export function ContactForm() {
                 <FormLabel>
                   I allow this website to store my submission so they can respond to my inquiry.
                 </FormLabel>
-                <FormMessage />
               </div>
             </FormItem>
           )}
         />
-        <Button type="submit" variant="destructive" className="w-full" disabled={isPending}>
-          {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+         <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}` : ''} />
+         <input type="hidden" name="_captcha" value="false" />
+
+        <Button type="submit" variant="destructive" className="w-full">
           Submit
         </Button>
       </form>
