@@ -1,11 +1,15 @@
 "use server";
 
 import { contactFormSchema, type ContactFormValues } from "@/lib/schemas";
+import { Resend } from "resend";
 
 export type ContactFormState = {
   message: string;
   success: boolean;
 };
+
+const resendApiKey = process.env.RESEND_API_KEY;
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 export async function sendContactMessage(
   data: ContactFormValues
@@ -13,37 +17,37 @@ export async function sendContactMessage(
   const validatedData = contactFormSchema.safeParse(data);
 
   if (!validatedData.success) {
-    // This case should ideally not be hit if client-side validation is working,
-    // but it's a good safeguard.
     return {
       success: false,
       message: "Invalid data provided. Please check the form and try again.",
     };
   }
-  
-  // Here you would integrate with an email sending service like Resend, SendGrid, etc.
-  // For this example, we'll just log to the console.
-  console.log("New contact form submission for manoj@manojnayak.com:");
-  console.log(validatedData.data);
 
-  // Example:
-  // try {
-  //   await resend.emails.send({
-  //     from: 'onboarding@resend.dev',
-  //     to: 'manoj@manojnayak.com',
-  //     subject: 'New Contact Form Submission from ClarityLink',
-  //     html: `<p>Name: ${validatedData.data.name}</p>
-  //            <p>Email: ${validatedData.data.email}</p>
-  //            <p>Phone: ${validatedData.data.phone}</p>
-  //            <p>Message: ${validatedData.data.message}</p>`,
-  //   });
-  // } catch (error) {
-  //   console.error("Failed to send email:", error);
-  //   return {
-  //     success: false,
-  //     message: "Sorry, there was an error sending your message. Please try again later.",
-  //   };
-  // }
+  if (!resend) {
+    console.error("Resend is not configured. Missing RESEND_API_KEY.");
+    return {
+      success: false,
+      message: "The email service is not configured correctly. Please contact the site administrator.",
+    };
+  }
+
+  try {
+    await resend.emails.send({
+      from: 'onboarding@resend.dev', // IMPORTANT: This must be a domain you've verified with Resend
+      to: 'manoj@manojnayak.com',
+      subject: 'New Contact Form Submission from UrbanWiz',
+      html: `<p>Name: ${validatedData.data.name}</p>
+             <p>Email: ${validatedData.data.email}</p>
+             <p>Phone: ${validatedData.data.phone}</p>
+             <p>Message: ${validatedData.data.message}</p>`,
+    });
+  } catch (error) {
+    console.error("Failed to send email:", error);
+    return {
+      success: false,
+      message: "Sorry, there was an error sending your message. Please try again later.",
+    };
+  }
 
   return {
     success: true,
