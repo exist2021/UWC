@@ -15,8 +15,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { sendContactMessage } from "@/app/actions";
+import { useToast } from "@/hooks/use-toast";
 
 export function ContactForm() {
+  const { toast } = useToast();
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -28,11 +31,28 @@ export function ContactForm() {
     },
   });
 
+  async function onSubmit(data: ContactFormValues) {
+    const result = await sendContactMessage(data);
+
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. We will get back to you shortly.",
+      });
+      form.reset();
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: result.message || "There was an error sending your message. Please try again.",
+      });
+    }
+  }
+
   return (
     <Form {...form}>
       <form 
-        action="https://formsubmit.co/manoj@manojnayak.com" 
-        method="POST"
+        onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
       >
         <FormField
@@ -106,11 +126,9 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-         <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}` : ''} />
-         <input type="hidden" name="_captcha" value="false" />
-
-        <Button type="submit" variant="destructive" className="w-full">
-          Submit
+        
+        <Button type="submit" variant="destructive" className="w-full" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting ? 'Submitting...' : 'Submit'}
         </Button>
       </form>
     </Form>
