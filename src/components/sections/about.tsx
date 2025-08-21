@@ -1,0 +1,36 @@
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+
+export default function About() {
+  return (
+    <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-white/50 dark:bg-black/50">
+      <div className="container px-4 md:px-6">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+              Real Communication That Works
+            </h2>
+            <p className="text-muted-foreground md:text-lg">
+              You have a clear vision at the 30,000-foot level, but making others on your team, employees, and stakeholders speak the same language isn’t easy. Education and complexity can get in the way. We get that. At ClarityLink, we simplify your message so it connects with everyone who matters and drives results on the ground.
+            </p>
+            <Button variant="link" size="lg" asChild className="p-0 text-lg">
+              <Link href="#contact">Let’s start the conversation &rarr;</Link>
+            </Button>
+          </div>
+          <div className="flex justify-center">
+            <Image
+              src="https://placehold.co/600x400.png"
+              alt="Team collaborating"
+              data-ai-hint="team meeting collaboration"
+              width={600}
+              height={400}
+              className="rounded-xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
