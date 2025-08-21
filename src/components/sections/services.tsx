@@ -6,22 +6,22 @@ const services = [
   {
     icon: <Scissors className="h-10 w-10 text-primary" />,
     title: 'Cut through the complexity',
-    description: 'We take your high-level vision and break it down into practical, straightforward language. No jargon. No confusion. Just clear messaging that helps everyone—from your senior team to frontline employees—understand what really matters and what needs to get done.',
+    description: 'We simplify your big ideas into clear, actionable messages everyone understands.',
   },
   {
     icon: <Users className="h-10 w-10 text-primary" />,
     title: 'Align your team',
-    description: 'It’s easy for miscommunication to get in the way of progress. We help you create a unified language for your organization, so everyone is moving toward the same objective with purpose. This means faster decisions, fewer mistakes, and a stronger culture of execution.',
+    description: 'We create a shared language so your team moves together toward the same goals.',
   },
   {
     icon: <Zap className="h-10 w-10 text-primary" />,
     title: 'Communicate with impact',
-    description: 'A great message doesn’t just sound good—it drives results. We help create the presentations, documents, emails, and stories that get your whole team on the same page and give your stakeholders confidence and clarity. Whether it’s for a big rollout or daily updates, your message will always land.',
+    description: 'We craft messages that get results and keep your stakeholders confident.',
   },
   {
     icon: <Briefcase className="h-10 w-10 text-primary" />,
     title: 'Ongoing support',
-    description: 'We don’t just walk away after delivering the strategy. Need to adjust your messaging as plans evolve? We’re always available for quick corrections, new project launches, or continuous improvement—so your communication always stays sharp and relevant.',
+    description: 'We stay available to help you adapt messaging as your plans evolve.',
   }
 ];
 
@@ -33,7 +33,7 @@ export default function Services() {
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">How We Help</h2>
             <p className="max-w-[900px] text-primary-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Making your vision something your whole team can now move forward with.
+              Making your vision something your whole team can move forward with.
             </p>
           </div>
         </div>
