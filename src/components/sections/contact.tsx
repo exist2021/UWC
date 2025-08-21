@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/contact-form';
 
 export default function Contact() {
   return (
-    <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-white/50 dark:bg-black/50">
+    <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-2xl">
           <Card className="shadow-lg">

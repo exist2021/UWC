@@ -5,7 +5,7 @@ import React from 'react';
 
 export default function About() {
   return (
-    <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-white/50 dark:bg-black/50">
+    <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-card">
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-4">
@@ -13,9 +13,9 @@ export default function About() {
               Real Communication That Works
             </h2>
             <p className="text-muted-foreground md:text-lg">
-              You have a clear vision at the 30,000-foot level, but making others on your team, employees, and stakeholders speak the same language isn’t easy. Education and complexity can get in the way. We get that. At ClarityLink, we simplify your message so it connects with everyone who matters and drives results on the ground.
+              You have a clear vision at the 30,000-foot level, but making others on your team, employees, and stakeholders speak the same language isn’t easy. Education and complexity can get in the way. We get that. At UrbanWiz, we simplify your message so it connects with everyone who matters and drives results on the ground.
             </p>
-            <Button variant="link" size="lg" asChild className="p-0 text-lg">
+            <Button variant="link" size="lg" asChild className="p-0 text-lg text-destructive hover:text-destructive/80">
               <Link href="#contact">Let’s start the conversation &rarr;</Link>
             </Button>
           </div>

@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'ClarityLink Communications | Turning Vision Into Clear Messages',
+  title: 'UrbanWiz Communications | Turning Vision Into Clear Messages',
   description: 'We help visionary leaders translate big ideas into simple, actionable messages for their teams and stakeholders.',
   keywords: ['communication strategy', 'leadership', 'team alignment', 'vision translation', 'stakeholder messaging'],
 };
@@ -20,7 +20,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased text-gray-800">
         {children}
         <Toaster />
       </body>

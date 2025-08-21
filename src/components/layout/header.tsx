@@ -21,7 +21,7 @@ export default function Header() {
         <div className="mr-4 flex items-center">
           <Link href="#home" className="mr-6 flex items-center space-x-2">
             <MessageSquare className="h-6 w-6 text-primary" />
-            <span className="font-bold">ClarityLink Communications</span>
+            <span className="font-bold">UrbanWiz Communications</span>
           </Link>
           <nav className="hidden gap-6 md:flex">
             {navLinks.map((link) => (
@@ -53,7 +53,7 @@ export default function Header() {
                 <div className="flex items-center justify-between border-b pb-2">
                    <Link href="#home" className="flex items-center space-x-2" onClick={() => setMenuOpen(false)}>
                       <MessageSquare className="h-6 w-6 text-primary" />
-                      <span className="font-bold">ClarityLink</span>
+                      <span className="font-bold">UrbanWiz</span>
                     </Link>
                 </div>
                 <nav className="mt-6 flex flex-col gap-4">
@@ -67,6 +67,13 @@ export default function Header() {
                       {link.label}
                     </Link>
                   ))}
+                  <Link
+                      href="#contact"
+                      className="text-lg font-medium text-foreground transition-colors hover:text-primary"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      Contact
+                    </Link>
                 </nav>
                 <Button asChild variant="destructive" className="mt-auto">
                     <Link href="#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
