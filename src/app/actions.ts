@@ -1,7 +1,6 @@
 "use server";
 
 import { contactFormSchema, type ContactFormValues } from "@/lib/schemas";
-import { Resend } from "resend";
 
 export type ContactFormState = {
   message: string;
@@ -20,38 +19,12 @@ export async function sendContactMessage(
     };
   }
 
-  const resendApiKey = process.env.RESEND_API_KEY;
-
-  if (!resendApiKey) {
-    console.error("Resend API key is not configured. Missing RESEND_API_KEY from .env.local");
-    return {
-      success: false,
-      message: "The email service is not configured correctly. Please contact the site administrator.",
-    };
-  }
-  
-  const resend = new Resend(resendApiKey);
-
-  try {
-    await resend.emails.send({
-      from: 'onboarding@resend.dev', // IMPORTANT: This must be a domain you've verified with Resend
-      to: 'manoj@manojnayak.com',
-      subject: 'New Contact Form Submission from UrbanWiz',
-      html: `<p>Name: ${validatedData.data.name}</p>
-             <p>Email: ${validatedData.data.email}</p>
-             <p>Phone: ${validatedData.data.phone}</p>
-             <p>Message: ${validatedData.data.message}</p>`,
-    });
-  } catch (error) {
-    console.error("Failed to send email:", error);
-    return {
-      success: false,
-      message: "Sorry, there was an error sending your message. Please try again later.",
-    };
-  }
+  // This is a prototype. In a real application, you would send an email here.
+  // For now, we'll just log it to the console and return a success message.
+  console.log("New contact form submission:", validatedData.data);
 
   return {
     success: true,
-    message: "Thank you for your message! We'll be in touch soon.",
+    message: "Thank you for your message! This is a demo and no email has been sent, but in a real application, we would be in touch soon.",
   };
 }
