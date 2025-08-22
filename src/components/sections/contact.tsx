@@ -9,7 +9,7 @@ export default function Contact() {
         <div className="mx-auto max-w-2xl">
           <Card className="shadow-lg">
             <CardHeader className="text-center">
-              <CardTitle className="text-3xl font-bold font-headline">Ready to take the next step?</CardTitle>
+              <CardTitle className="text-3xl font-bold font-headline">Ready to own the ground? sign up</CardTitle>
               <CardDescription className="text-muted-foreground pt-2 md:text-lg">
                 Drop us a message and let’s get your vision moving.
               </CardDescription>
