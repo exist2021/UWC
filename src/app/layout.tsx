@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'UrbanWiz Communications | Giving Vision Solid Ground',
   description: 'We help visionary leaders translate big ideas into simple, actionable messages for their teams and stakeholders.',
   keywords: ['communication strategy', 'leadership', 'team alignment', 'vision translation', 'stakeholder messaging'],
+  icons: {
+    icon: 'https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png',
+  },
 };
 
 export default function RootLayout({

@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, MessageSquare, Moon, Sun } from 'lucide-react';
+import { Menu, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -51,7 +52,7 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <div className="flex items-center">
           <Link href="#home" className="flex items-center space-x-2">
-            <MessageSquare className="h-6 w-6 text-primary" />
+            <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="UrbanWiz Logo" width={32} height={32} />
             <span className="font-bold">UrbanWiz Communications</span>
           </Link>
         </div>
@@ -83,7 +84,7 @@ export default function Header() {
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-2">
                    <Link href="#home" className="flex items-center space-x-2" onClick={() => setMenuOpen(false)}>
-                      <MessageSquare className="h-6 w-6 text-primary" />
+                      <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="UrbanWiz Logo" width={32} height={32} />
                       <span className="font-bold">UrbanWiz</span>
                     </Link>
                 </div>
