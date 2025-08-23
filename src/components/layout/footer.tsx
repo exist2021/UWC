@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t bg-primary text-primary-foreground">
-      <div className="container mx-auto flex flex-col items-center justify-center py-6 text-center sm:flex-row sm:justify-between">
+      <div className="container mx-auto flex flex-col items-center justify-between py-6 text-center sm:flex-row">
         <div className="flex space-x-4">
           {socialLinks.map((link) => (
             <Link
