@@ -4,22 +4,22 @@ import React from 'react';
 
 const services = [
   {
-    icon: <Scissors className="h-10 w-10 text-primary" />,
+    icon: <Scissors className="h-10 w-10 text-accent" />,
     title: 'Cut through the complexity',
     description: 'We simplify your big ideas into clear, actionable messages everyone understands.',
   },
   {
-    icon: <Users className="h-10 w-10 text-primary" />,
+    icon: <Users className="h-10 w-10 text-accent" />,
     title: 'Align your team',
     description: 'We create a shared language so your team moves together toward the same goals.',
   },
   {
-    icon: <Zap className="h-10 w-10 text-primary" />,
+    icon: <Zap className="h-10 w-10 text-accent" />,
     title: 'Communicate with impact',
     description: 'We craft messages that get results and keep your stakeholders confident.',
   },
   {
-    icon: <Briefcase className="h-10 w-10 text-primary" />,
+    icon: <Briefcase className="h-10 w-10 text-accent" />,
     title: 'Ongoing support',
     description: 'We stay available to help you adapt messaging as your plans evolve.',
   }
