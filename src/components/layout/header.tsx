@@ -53,8 +53,8 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="ClarityLink Logo" width={32} height={32} />
-            <span className="font-bold">ClarityLink Communications</span>
+            <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="UrbanWiz Logo" width={32} height={32} />
+            <span className="font-bold">UrbanWiz Communications</span>
           </Link>
         </div>
 
@@ -85,8 +85,8 @@ export default function Header() {
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-2">
                    <Link href="/" className="flex items-center space-x-2" onClick={() => setMenuOpen(false)}>
-                      <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="ClarityLink Logo" width={32} height={32} />
-                      <span className="font-bold">ClarityLink</span>
+                      <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="UrbanWiz Logo" width={32} height={32} />
+                      <span className="font-bold">UrbanWiz</span>
                     </Link>
                 </div>
                 <nav className="mt-6 flex flex-col gap-4">

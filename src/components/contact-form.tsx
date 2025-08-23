@@ -101,7 +101,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Message</FormLabel>
               <FormControl>
-                <Textarea placeholder="How can we help you clarify your message?" {...field} />
+                <Textarea placeholder="How can we help you?" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
