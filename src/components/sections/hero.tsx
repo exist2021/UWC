@@ -15,7 +15,7 @@ export default function Hero() {
               We help leaders translate their big ideas into language everyone can understand—and act on.
             </p>
           </div>
-          <Button size="lg" variant="destructive" asChild>
+          <Button size="lg" variant="secondary" asChild>
             <Link href="#services">Explore Our Services</Link>
           </Button>
         </div>

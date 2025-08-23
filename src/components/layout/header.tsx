@@ -70,7 +70,7 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          <Button asChild variant="destructive" className="hidden md:inline-flex">
+          <Button asChild className="hidden md:inline-flex">
             <Link href="/#contact">Contact</Link>
           </Button>
           <ThemeToggle />
@@ -108,7 +108,7 @@ export default function Header() {
                       Contact
                     </Link>
                 </nav>
-                <Button asChild variant="destructive" className="mt-auto">
+                <Button asChild className="mt-auto">
                     <Link href="/#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
                 </Button>
               </div>

@@ -127,7 +127,7 @@ export function ContactForm() {
           )}
         />
         
-        <Button type="submit" variant="destructive" className="w-full" disabled={form.formState.isSubmitting}>
+        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
           {form.formState.isSubmitting ? 'Submitting...' : 'Submit'}
         </Button>
       </form>
