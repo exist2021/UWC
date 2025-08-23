@@ -13,7 +13,7 @@ export default function About() {
               Real Communication That Works
             </h2>
             <p className="text-muted-foreground md:text-lg">
-              You have a clear vision at the 30,000-foot level, but making your team, employees, and stakeholders understand the same vision isn’t easy. The curse of knowledge can get in the way. At Urbanwiz Communications, we break down your message so it connects with everyone who matters, enabling the organization to achieve its objectives.
+              You have a clear vision at the 30,000-foot level, but making your team, employees, and stakeholders understand the same vision isn’t easy. The curse of knowledge can get in the way. At ClarityLink Communications, we break down your message so it connects with everyone who matters, enabling the organization to achieve its objectives.
             </p>
             <Button variant="link" size="lg" asChild className="p-0 text-lg text-destructive hover:text-destructive/80">
               <Link href="#contact">Let’s start the conversation &rarr;</Link>

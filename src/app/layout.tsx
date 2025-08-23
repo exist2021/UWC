@@ -5,7 +5,7 @@ import Analytics from '@/components/analytics';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'UrbanWiz Communications | Giving Vision Solid Ground',
+  title: 'ClarityLink Communications',
   description: 'We help visionary leaders translate big ideas into simple, actionable messages for their teams and stakeholders.',
   keywords: ['communication strategy', 'leadership', 'team alignment', 'vision translation', 'stakeholder messaging'],
   icons: {

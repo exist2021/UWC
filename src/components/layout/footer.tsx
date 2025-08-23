@@ -30,7 +30,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="text-sm">
-          &copy; {currentYear} UrbanWiz Communications. All rights reserved.
+          &copy; {currentYear} ClarityLink Communications. All rights reserved.
         </p>
         <p className="text-xs">
           Made via AI 🤖 Vibe-coding by{' '}
