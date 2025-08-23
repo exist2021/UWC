@@ -8,9 +8,10 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Image from 'next/image';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
+  { href: '/', label: 'Home' },
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/blog', label: 'Blog' },
 ];
 
 function ThemeToggle() {
@@ -51,7 +52,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <div className="flex items-center">
-          <Link href="#home" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="ClarityLink Logo" width={32} height={32} />
             <span className="font-bold">ClarityLink Communications</span>
           </Link>
@@ -70,7 +71,7 @@ export default function Header() {
             ))}
           </nav>
           <Button asChild variant="destructive" className="hidden md:inline-flex">
-            <Link href="#contact">Contact</Link>
+            <Link href="/#contact">Contact</Link>
           </Button>
           <ThemeToggle />
           <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
@@ -83,7 +84,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[240px]">
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-2">
-                   <Link href="#home" className="flex items-center space-x-2" onClick={() => setMenuOpen(false)}>
+                   <Link href="/" className="flex items-center space-x-2" onClick={() => setMenuOpen(false)}>
                       <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="ClarityLink Logo" width={32} height={32} />
                       <span className="font-bold">ClarityLink</span>
                     </Link>
@@ -100,7 +101,7 @@ export default function Header() {
                     </Link>
                   ))}
                   <Link
-                      href="#contact"
+                      href="/#contact"
                       className="text-lg font-medium text-foreground transition-colors hover:text-primary"
                       onClick={() => setMenuOpen(false)}
                     >
@@ -108,7 +109,7 @@ export default function Header() {
                     </Link>
                 </nav>
                 <Button asChild variant="destructive" className="mt-auto">
-                    <Link href="#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+                    <Link href="/#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
                 </Button>
               </div>
             </SheetContent>
