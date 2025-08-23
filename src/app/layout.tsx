@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import Analytics from '@/components/analytics';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'UrbanWiz Communications | Giving Vision Solid Ground',
@@ -28,6 +29,11 @@ export default function RootLayout({
       <body className="font-body antialiased text-gray-800">
         {children}
         <Toaster />
+        <Script id="lfeeder-tracker">
+          {`
+            (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('3P1w24dmd3lamY5n');
+          `}
+        </Script>
       </body>
     </html>
   );
