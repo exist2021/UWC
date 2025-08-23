@@ -14,8 +14,8 @@ export default function Footer() {
 
   return (
     <footer className="border-t bg-primary text-primary-foreground">
-      <div className="container flex flex-col items-center justify-center py-6 text-center">
-        <div className="flex space-x-4 mb-4">
+      <div className="container flex flex-col items-center justify-between py-6 text-center sm:flex-row">
+        <div className="flex space-x-4">
           {socialLinks.map((link) => (
             <Link
               key={link.name}
@@ -29,10 +29,10 @@ export default function Footer() {
             </Link>
           ))}
         </div>
-        <p className="text-sm">
+        <p className="text-sm mt-4 sm:mt-0">
           &copy; {currentYear} UrbanWiz Communications. All rights reserved.
         </p>
-        <p className="text-xs mt-1">
+        <p className="text-xs mt-4 sm:mt-0">
           Made via AI 🤖 Vibe-coding by{' '}
           <Link
             href="https://manojnayak.com"
