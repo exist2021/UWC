@@ -55,7 +55,7 @@ What began as one elderly monk's seemingly impossible dream has become:
 
 The video script's final question—"What's your vision?"—is particularly powerful when viewed against this backdrop. Srila Prabhupada's story demonstrates that age, resources, and circumstances need not limit the scope of one's vision. At 69, with seven dollars and no connections, he embarked on a mission that many would have considered impossible.
 
-Today, every day, ISKCON's network serves over 5 million meals to children through mid-day meal programs alone[script reference], operates hundreds of temples where millions gather for spiritual nourishment, and continues expanding its reach into new communities and countries.
+Today, every day, ISKCON's network serves over 5 million meals to children through mid-day meal programs alone\[script reference], operates hundreds of temples where millions gather for spiritual nourishment, and continues expanding its reach into new communities and countries.
 
 ## **Lessons for Our Time**
 
