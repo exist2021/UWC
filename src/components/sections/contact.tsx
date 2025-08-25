@@ -64,8 +64,6 @@ export default function Contact() {
     try {
       tempForm.submit();
       
-      // Since form submission to an iframe doesn't give a direct success callback,
-      // we'll optimistically show the success message after a short delay.
       setTimeout(() => {
         toast({
           title: 'Success!',
@@ -164,8 +162,7 @@ export default function Contact() {
                 name="hidden-iframe" 
                 style={{display: 'none'}} 
                 onLoad={(e) => {
-                  // The iframe has loaded the response from Google.
-                  // This is another signal that the submission likely went through.
+                  // This is a dummy onLoad to ensure the iframe is part of the component lifecycle.
                 }}
               ></iframe>
             </CardContent>
