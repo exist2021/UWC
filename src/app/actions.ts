@@ -1,3 +1,4 @@
+
 "use server";
 
 import { z } from "zod";
@@ -32,7 +33,7 @@ export async function sendContactMessage(data: ContactFormInputs) {
         <p><strong>Name:</strong> ${result.data.name}</p>
         <p><strong>Email:</strong> ${result.data.email}</p>
         <p><strong>Phone:</strong> ${result.data.phone}</p>
-        <p><strong>Message:</strong></p>
+        <p><strong>Vision:</strong></p>
         <p>${result.data.message}</p>
       `,
     });
