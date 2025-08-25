@@ -4,7 +4,7 @@ date: '2024-07-31'
 coverImage: 'https://i.postimg.cc/vBvp21Vx/93963955-980-D-4-F69-BF70-4-B4-F6-E933-E87.png'
 ---
 
-This is the story of how a single man's spiritual vision in 1966 grew into a global movement that now feeds over 1.2 million children daily and operates temples across every continent on Earth.
+This is the story of how a single man's spiritual vision in 1966 grew into a global movement that now feeds over 4  million children daily and operates temples across every continent on Earth.
 
 ## **The Humble Beginning of an Extraordinary Vision**
 
@@ -24,7 +24,7 @@ The numbers speak for themselves. From that single New York storefront, ISKCON h
 
 - **Over 800 temples and centers worldwide**, with some sources indicating up to 2,000+ temples globally
 - **Presence in over 150 countries** across all six continents
-- **India alone hosts over 800 temples**, making it the region with the highest density of ISKCON centers
+- **India alone hosts over 850 temples**, making it the region with the highest density of ISKCON centers
 - **135 centers in Europe, 80 in Asia, 68 in North America, 60 in South America, 69 in Africa, and 10 in Australia**
 
 ![ISKCON Global Presence](https://i.postimg.cc/Gh42jPtN/IMG-6480.jpg)
@@ -58,7 +58,7 @@ What began as one elderly monk's seemingly impossible dream has become:
 
 ## **The Power of Vision**
 
-The video script's final question—"What's your vision?"—is particularly powerful when viewed against this backdrop. Srila Prabhupada's story demonstrates that age, resources, and circumstances need not limit the scope of one's vision. At 69, with seven dollars and no connections, he embarked on a mission that many would have considered impossible.
+ Srila Prabhupada's story demonstrates that age, resources, and circumstances need not limit the scope of one's vision. At 69, with seven dollars and no connections, he embarked on a mission that many would have considered impossible.
 
 Today, every day, ISKCON's network serves over 5 million meals to children through mid-day meal programs alone\[script reference], operates hundreds of temples where millions gather for spiritual nourishment, and continues expanding its reach into new communities and countries.
 

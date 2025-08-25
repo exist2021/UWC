@@ -3,12 +3,43 @@ import {format} from 'date-fns';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import Image from 'next/image';
+import type { Metadata } from 'next'
 
 type Props = {
   params: {
     slug: string;
   };
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = params;
+  const postData = await getPostData(slug);
+  const plainTextDescription = postData.contentHtml.replace(/<[^>]*>?/gm, '').substring(0, 160);
+
+  return {
+    title: postData.title,
+    description: `${plainTextDescription}...`,
+    openGraph: {
+      title: postData.title,
+      description: `${plainTextDescription}...`,
+      images: [
+        {
+          url: postData.coverImage || 'https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png',
+          width: 1200,
+          height: 630,
+          alt: postData.title,
+        },
+      ],
+      type: 'article',
+    },
+     twitter: {
+      card: 'summary_large_image',
+      title: postData.title,
+      description: `${plainTextDescription}...`,
+      images: [postData.coverImage || 'https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png'],
+    },
+  }
+}
 
 export async function generateStaticParams() {
   const paths = getAllPostSlugs();
