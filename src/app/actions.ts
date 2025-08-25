@@ -11,36 +11,47 @@ export async function sendContactMessage(data: ContactFormInputs) {
   const result = contactFormSchema.safeParse(data);
 
   if (!result.success) {
+    console.error("Form validation failed:", result.error.flatten().fieldErrors);
     return { success: false, message: "Invalid form data." };
   }
 
-  // Check for the API key first
+  const { name, email, phone, message } = result.data;
+
   if (!process.env.RESEND_API_KEY) {
     console.error("Resend API key is missing from environment variables.");
     return { success: false, message: "Email service is not configured. The API key is missing." };
   }
 
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   try {
-    // Initialize Resend inside the function
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
-    await resend.emails.send({
-      from: "onboarding@resend.dev", // IMPORTANT: Must be a verified domain on Resend for production
-      to: "manoj@manojnayak.com",
-      subject: "New Contact Form Submission",
+    const { data: sentData, error } = await resend.emails.send({
+      from: "UrbanWiz Contact Form <no-reply@resend.dev>",
+      to: "your-email@example.com", // TODO: Replace with your actual email address
+      subject: "New Vision Submission from UrbanWiz Website",
+      reply_to: email,
       html: `
         <p>You have a new contact form submission:</p>
-        <p><strong>Name:</strong> ${result.data.name}</p>
-        <p><strong>Email:</strong> ${result.data.email}</p>
-        <p><strong>Phone:</strong> ${result.data.phone}</p>
+        <ul>
+          <li><strong>Name:</strong> ${name}</li>
+          <li><strong>Email:</strong> ${email}</li>
+          <li><strong>Phone:</strong> ${phone || 'Not provided'}</li>
+        </ul>
         <p><strong>Vision:</strong></p>
-        <p>${result.data.message}</p>
+        <p>${message}</p>
       `,
     });
-  } catch (error) {
-    console.error("Error sending email:", error);
-    return { success: false, message: "Failed to send message. Please check the server logs." };
-  }
 
-  return { success: true, message: "Message sent successfully." };
+    if (error) {
+      console.error("Error sending email with Resend:", error);
+      return { success: false, message: "Failed to send message due to a server error." };
+    }
+
+    console.log("Email sent successfully:", sentData);
+    return { success: true, message: "Message sent successfully." };
+
+  } catch (error) {
+    console.error("An unexpected error occurred:", error);
+    return { success: false, message: "An unexpected error occurred. Please try again." };
+  }
 }
