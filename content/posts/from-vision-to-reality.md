@@ -27,6 +27,8 @@ The numbers speak for themselves. From that single New York storefront, ISKCON h
 - **India alone hosts over 800 temples**, making it the region with the highest density of ISKCON centers
 - **135 centers in Europe, 80 in Asia, 68 in North America, 60 in South America, 69 in Africa, and 10 in Australia**
 
+![ISKCON Global Presence](https://i.postimg.cc/Gh42jPtN/IMG-6480.jpg)
+
 This expansion represents one of the most successful spiritual movements in modern history, achieving global reach within just five decades.
 
 ## **The Humanitarian Impact: Feeding Millions Daily**
@@ -39,6 +41,8 @@ The scale of this operation is staggering:
 - **The Akshaya Patra Foundation, an ISKCON initiative, serves 1.76 million children daily** across 42 locations in 12 states of India
 - **In total, ISKCON's Food for Life network provides over 1 million free meals daily worldwide**
 - **Over 8.7 billion servings of prasadam have been distributed globally**
+
+![ISKCON Food Distribution](https://i.postimg.cc/bYCrbVyk/7-EACCC77-60-C9-465-B-9211-22-F318-C99-AC6.png)
 
 These numbers represent more than statistics—they represent millions of children who can attend school instead of working for food, families who receive nutrition during disasters, and communities that benefit from this massive humanitarian effort.
 
