@@ -11,11 +11,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 
-// 1. Define the validation schema for the form fields.
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
-  phone: z.string().optional(),
+  phone: z.string().min(1, { message: 'Phone number is required.' }),
   vision: z.string().min(10, { message: 'Vision must be at least 10 characters.' }),
 });
 
@@ -34,51 +33,24 @@ export default function Contact() {
     },
   });
 
-  //
-  // INSTRUCTIONS: How to connect this form to your Google Form
-  //
-  // Step 1: Create a Google Form with fields for: Name, Email, Phone (Optional), and Vision.
-  //
-  // Step 2: Get your Google Form's Action URL.
-  //    a. Open your Google Form, click "Send".
-  //    b. Go to the "Send via link" tab (🔗).
-  //    c. Copy the link. It will look like: https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=sf_link
-  //    d. Modify the URL by replacing "/viewform?usp=sf_link" with "/formResponse".
-  //    e. Paste the modified URL below.
-  //
   const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdeweZRTAM74gfSpTEW9UEzwvAitULg67c0puZW7dqq41TuiQ/formResponse';
 
-
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
-    //
-    // Step 3: Get the "name" attribute for each field from a pre-filled link.
-    //    a. In your Google Form, click the 3-dot menu and "Get pre-filled link".
-    //    b. Fill in sample data and click "Get link".
-    //    c. Copy the link and paste it in a text editor.
-    //    d. Find the `entry.xxxxxxxxx` values in the URL and paste them below.
-    //
-    const formData = new FormData();
+    const formData = new URLSearchParams();
     formData.append('entry.78448593', data.name);
     formData.append('entry.1448024452', data.email);
-    formData.append('entry.647299928', data.phone || '');
+    formData.append('entry.647299928', data.phone);
     formData.append('entry.1107769049', data.vision);
-
-    // Do not modify below this line
-    if (googleFormActionUrl.includes('PASTE_YOUR_FORM_ID_HERE')) {
-        toast({
-            title: 'Form Not Connected',
-            description: 'Please follow the instructions in src/components/sections/contact.tsx to connect your Google Form.',
-            variant: 'destructive',
-        });
-        return;
-    }
 
     setIsSubmitting(true);
     try {
       await fetch(googleFormActionUrl, {
         method: 'POST',
         body: formData,
-        mode: 'no-cors', // This is required for Google Forms submissions
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
       });
       toast({
         title: 'Success!',
@@ -86,6 +58,7 @@ export default function Contact() {
       });
       form.reset();
     } catch (error) {
+      console.error(error);
       toast({
         title: 'Error',
         description: 'Something went wrong. Please try again.',
@@ -141,7 +114,7 @@ export default function Contact() {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Phone (Optional)</FormLabel>
+                        <FormLabel>Phone</FormLabel>
                         <FormControl>
                           <Input placeholder="Your Phone Number" {...field} />
                         </FormControl>
