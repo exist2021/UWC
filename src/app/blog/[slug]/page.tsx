@@ -15,7 +15,8 @@ export async function generateStaticParams() {
   return paths.map(p => ({slug: p.params.slug}));
 }
 
-export default async function Post({ params: { slug } }: Props) {
+export default async function Post({ params }: Props) {
+  const { slug } = params;
   const postData = await getPostData(slug);
 
   return (
