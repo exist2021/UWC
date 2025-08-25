@@ -71,7 +71,7 @@ export default function Header() {
             ))}
           </nav>
           <Button asChild className="hidden md:inline-flex bg-accent text-accent-foreground hover:bg-accent/90">
-            <Link href="/#contact">Contact</Link>
+            <Link href="/#contact">Share Your Vision</Link>
           </Button>
           <ThemeToggle />
           <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
