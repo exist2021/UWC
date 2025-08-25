@@ -2,6 +2,7 @@ import { getPostData, getAllPostSlugs } from '@/lib/posts';
 import {format} from 'date-fns';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
+import Image from 'next/image';
 
 type Props = {
   params: {
@@ -28,6 +29,15 @@ export default async function Post({ params }: Props) {
                 <div className="text-muted-foreground mb-8">
                     {format(new Date(postData.date), 'MMMM d, yyyy')}
                 </div>
+                {postData.coverImage && (
+                    <Image
+                        src={postData.coverImage}
+                        alt={`${postData.title} cover image`}
+                        width={1200}
+                        height={630}
+                        className="rounded-lg mb-8 aspect-video object-cover"
+                    />
+                )}
                 <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
             </article>
         </main>

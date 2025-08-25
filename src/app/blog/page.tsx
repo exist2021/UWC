@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getSortedPostsData } from '@/lib/posts';
 import {format} from 'date-fns';
 import Header from '@/components/layout/header';
@@ -15,15 +16,33 @@ export default function Blog() {
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline mb-12 text-center">
             Blog
           </h1>
-          <ul className="space-y-8 max-w-4xl mx-auto">
-            {allPostsData.map(({ slug, date, title }) => (
-              <li key={slug} className="border-b pb-4">
-                <h2 className="text-2xl font-bold hover:text-primary">
-                  <Link href={`/blog/${slug}`}>{title}</Link>
-                </h2>
-                <small className="text-muted-foreground">
-                  {format(new Date(date), 'MMMM d, yyyy')}
-                </small>
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {allPostsData.map(({ slug, date, title, coverImage }) => (
+              <li key={slug} className="group flex flex-col overflow-hidden rounded-lg border shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                <Link href={`/blog/${slug}`} className="block">
+                  <div className="relative aspect-video">
+                  {coverImage ? (
+                    <Image 
+                      src={coverImage}
+                      alt={`${title} cover image`}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-muted flex items-center justify-center">
+                      <span className="text-muted-foreground">No Image</span>
+                    </div>
+                  )}
+                  </div>
+                  <div className="p-6 bg-card flex-1 flex flex-col">
+                    <h2 className="text-xl font-bold group-hover:text-primary mb-2">
+                      {title}
+                    </h2>
+                    <small className="text-muted-foreground">
+                      {format(new Date(date), 'MMMM d, yyyy')}
+                    </small>
+                  </div>
+                </Link>
               </li>
             ))}
           </ul>
