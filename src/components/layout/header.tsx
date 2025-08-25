@@ -102,7 +102,7 @@ export default function Header() {
                   ))}
                 </nav>
                 <Button asChild className="mt-auto bg-accent text-accent-foreground hover:bg-accent/90">
-                    <Link href="/#contact" onClick={() => setMenuOpen(false)}>Submit Vision</Link>
+                    <Link href="/#contact" onClick={() => setMenuOpen(false)}>Share Your Vision</Link>
                 </Button>
               </div>
             </SheetContent>
