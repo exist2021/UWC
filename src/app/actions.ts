@@ -26,7 +26,7 @@ export async function sendContactMessage(data: ContactFormInputs) {
 
   try {
     const { data: sentData, error } = await resend.emails.send({
-      from: "UrbanWiz <noreply@urbanwiz.com>",
+      from: "UrbanWiz <onboarding@resend.dev>",
       to: "manoj@manojnayak.com",
       subject: "New Vision Submission from UrbanWiz Website",
       reply_to: email,
