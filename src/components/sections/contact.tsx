@@ -58,10 +58,10 @@ export default function Contact() {
     //    d. Find the `entry.xxxxxxxxx` values in the URL and paste them below.
     //
     const formData = new FormData();
-    formData.append('entry.xxxxxxxxx', data.name);     // Replace with Name field ID
-    formData.append('entry.xxxxxxxxx', data.email);    // Replace with Email field ID
-    formData.append('entry.xxxxxxxxx', data.phone || ''); // Replace with Phone field ID
-    formData.append('entry.xxxxxxxxx', data.vision);  // Replace with Vision field ID
+    formData.append('entry.78448593', data.name);
+    formData.append('entry.1448024452', data.email);
+    formData.append('entry.647299928', data.phone || '');
+    formData.append('entry.1107769049', data.vision);
 
     // Do not modify below this line
     if (googleFormActionUrl.includes('PASTE_YOUR_FORM_ID_HERE')) {
