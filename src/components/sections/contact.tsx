@@ -16,10 +16,10 @@ import { sendContactMessage } from '@/app/actions';
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
-  phone: z.string().min(1, { message: 'Phone number is required.' }),
+  phone: z.string().min(10, { message: 'Please enter a valid 10-digit phone number.' }),
   vision: z.string().min(10, { message: 'Vision must be at least 10 characters.' }),
-  consent: z.boolean().refine((val) => val === true, {
-    message: 'You must agree to the terms to continue.',
+  consent: z.literal(true, {
+    errorMap: () => ({ message: 'You must agree to the terms to continue.' }),
   }),
 });
 
