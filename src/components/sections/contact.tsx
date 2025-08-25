@@ -11,9 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 
-// 1. Create your Google Form.
-// 2. Get the pre-filled link for each field to find the 'name' attribute.
-//    It will look like 'entry.xxxxxxx'.
+// 1. Define the validation schema for the form fields.
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
@@ -35,29 +33,53 @@ export default function Contact() {
       vision: '',
     },
   });
-  
-  // 3. Replace this with your Google Form's action URL.
-  //    It should end in '/formResponse'.
-  const googleFormActionUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+
+  //
+  // INSTRUCTIONS: How to connect this form to your Google Form
+  //
+  // Step 1: Create a Google Form with fields for: Name, Email, Phone (Optional), and Vision.
+  //
+  // Step 2: Get your Google Form's Action URL.
+  //    a. Open your Google Form, click "Send".
+  //    b. Go to the "Send via link" tab (🔗).
+  //    c. Copy the link. It will look like: https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=sf_link
+  //    d. Modify the URL by replacing "/viewform?usp=sf_link" with "/formResponse".
+  //    e. Paste the modified URL below.
+  //
+  const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdeweZRTAM74gfSpTEW9UEzwvAitULg67c0puZW7dqq41TuiQ/formResponse';
 
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
-    setIsSubmitting(true);
-    
+    //
+    // Step 3: Get the "name" attribute for each field from a pre-filled link.
+    //    a. In your Google Form, click the 3-dot menu and "Get pre-filled link".
+    //    b. Fill in sample data and click "Get link".
+    //    c. Copy the link and paste it in a text editor.
+    //    d. Find the `entry.xxxxxxxxx` values in the URL and paste them below.
+    //
     const formData = new FormData();
-    // 4. Replace these with the 'name' attributes from your Google Form fields.
-    formData.append('entry.xxxxxxxxx', data.name); // Replace with Name field ID
-    formData.append('entry.xxxxxxxxx', data.email); // Replace with Email field ID
+    formData.append('entry.xxxxxxxxx', data.name);     // Replace with Name field ID
+    formData.append('entry.xxxxxxxxx', data.email);    // Replace with Email field ID
     formData.append('entry.xxxxxxxxx', data.phone || ''); // Replace with Phone field ID
-    formData.append('entry.xxxxxxxxx', data.vision); // Replace with Vision field ID
+    formData.append('entry.xxxxxxxxx', data.vision);  // Replace with Vision field ID
 
+    // Do not modify below this line
+    if (googleFormActionUrl.includes('PASTE_YOUR_FORM_ID_HERE')) {
+        toast({
+            title: 'Form Not Connected',
+            description: 'Please follow the instructions in src/components/sections/contact.tsx to connect your Google Form.',
+            variant: 'destructive',
+        });
+        return;
+    }
+
+    setIsSubmitting(true);
     try {
       await fetch(googleFormActionUrl, {
         method: 'POST',
         body: formData,
-        mode: 'no-cors', // Important: Google Forms requires this
+        mode: 'no-cors', // This is required for Google Forms submissions
       });
-      
       toast({
         title: 'Success!',
         description: "Your vision has been shared. We'll be in touch soon.",
@@ -145,10 +167,6 @@ export default function Contact() {
                   </Button>
                 </form>
               </Form>
-               <p className="mt-4 text-center text-xs text-muted-foreground">
-                This form submits to a Google Form. Please follow the instructions in{' '}
-                <code className="bg-muted px-1 py-0.5 rounded">src/components/sections/contact.tsx</code> to connect your own form.
-              </p>
             </CardContent>
           </Card>
         </div>
