@@ -15,8 +15,8 @@ export async function generateStaticParams() {
   return paths.map(p => ({slug: p.params.slug}));
 }
 
-export default async function Post({ params }: Props) {
-  const postData = await getPostData(params.slug);
+export default async function Post({ params: { slug } }: Props) {
+  const postData = await getPostData(slug);
 
   return (
     <div className="flex flex-col min-h-screen">
