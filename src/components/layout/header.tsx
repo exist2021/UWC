@@ -100,13 +100,6 @@ export default function Header() {
                       {link.label}
                     </Link>
                   ))}
-                  <Link
-                      href="/#contact"
-                      className="text-lg font-medium text-foreground transition-colors hover:text-primary"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      Contact
-                    </Link>
                 </nav>
                 <Button asChild className="mt-auto bg-accent text-accent-foreground hover:bg-accent/90">
                     <Link href="/#contact" onClick={() => setMenuOpen(false)}>Contact</Link>

@@ -74,7 +74,7 @@ This remarkable transformation offers several profound lessons:
 
 **Starting where you are**: The movement began with whatever resources were available—a small room, a few interested people, and an unshakeable vision.
 
-The story captured in your video script is ultimately about the power of spiritual vision combined with practical action. It asks us to consider: if one person with virtually nothing could create such a transformation, what might be possible if more of us embraced similarly expansive visions for serving humanity?
+The story is ultimately about the power of spiritual vision combined with practical action. It asks us to consider: if one person with virtually nothing could create such a transformation, what might be possible if more of us embraced similarly expansive visions for serving humanity?
 
 In a world often focused on limitations and obstacles, the ISKCON story stands as a testament to what becomes possible when vision, service, and determination converge. The question "What's your vision?" is not merely rhetorical—it's an invitation to consider how we might contribute to the world's transformation, regardless of our current circumstances or resources.
 
