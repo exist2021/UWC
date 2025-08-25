@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -34,38 +34,57 @@ export default function Contact() {
   });
 
   const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdeweZRTAM74gfSpTEW9UEzwvAitULg67c0puZW7dqq41TuiQ/formResponse';
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
-    const formData = new URLSearchParams();
-    formData.append('entry.78448593', data.name);
-    formData.append('entry.1448024452', data.email);
-    formData.append('entry.647299928', data.phone);
-    formData.append('entry.1107769049', data.vision);
-
     setIsSubmitting(true);
+    
+    const tempForm = document.createElement('form');
+    tempForm.method = 'POST';
+    tempForm.action = googleFormActionUrl;
+    tempForm.target = iframeRef.current!.name;
+    
+    const fields = {
+      'entry.78448593': data.name,
+      'entry.1448024452': data.email,
+      'entry.647299928': data.phone,
+      'entry.1107769049': data.vision,
+    };
+    
+    for (const key in fields) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = fields[key as keyof typeof fields];
+      tempForm.appendChild(input);
+    }
+    
+    document.body.appendChild(tempForm);
+    
     try {
-      await fetch(googleFormActionUrl, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        }
-      });
-      toast({
-        title: 'Success!',
-        description: "Your vision has been shared. We'll be in touch soon.",
-      });
-      form.reset();
+      tempForm.submit();
+      
+      // Since form submission to an iframe doesn't give a direct success callback,
+      // we'll optimistically show the success message after a short delay.
+      setTimeout(() => {
+        toast({
+          title: 'Success!',
+          description: "Your vision has been shared. We'll be in touch soon.",
+        });
+        form.reset();
+        setIsSubmitting(false);
+        document.body.removeChild(tempForm);
+      }, 1000);
+
     } catch (error) {
-      console.error(error);
+      console.error("Form submission error:", error);
       toast({
         title: 'Error',
         description: 'Something went wrong. Please try again.',
         variant: 'destructive',
       });
-    } finally {
       setIsSubmitting(false);
+      document.body.removeChild(tempForm);
     }
   };
 
@@ -140,6 +159,15 @@ export default function Contact() {
                   </Button>
                 </form>
               </Form>
+              <iframe 
+                ref={iframeRef} 
+                name="hidden-iframe" 
+                style={{display: 'none'}} 
+                onLoad={(e) => {
+                  // The iframe has loaded the response from Google.
+                  // This is another signal that the submission likely went through.
+                }}
+              ></iframe>
             </CardContent>
           </Card>
         </div>
