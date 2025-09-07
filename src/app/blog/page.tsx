@@ -18,6 +18,9 @@ export default function BlogPage() {
             <p className="mt-4 text-muted-foreground md:text-lg">
               Explore insights on communication, leadership, and vision.
             </p>
+            <p className="mt-4 max-w-2xl mx-auto text-sm text-muted-foreground italic">
+              Disclaimer: The essays on this blog are AI-generated explorations of various topics and do not necessarily represent the views or opinions of UrbanWiz Communications.
+            </p>
           </div>
           <BlogClientPage allPostsData={allPostsData} />
         </div>
