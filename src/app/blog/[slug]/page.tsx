@@ -4,6 +4,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import Image from 'next/image';
 import type { Metadata } from 'next'
+import { Separator } from '@/components/ui/separator';
 
 type Props = {
   params: {
@@ -71,6 +72,12 @@ export default async function Post({ params }: Props) {
                     />
                 )}
                 <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+                <Separator className="my-8" />
+                <div className="not-prose">
+                  <p className="text-sm text-muted-foreground italic text-center">
+                    Disclaimer: The essays on this blog are AI-generated explorations of various topics and do not necessarily represent the views or opinions of UrbanWiz Communications.
+                  </p>
+                </div>
             </article>
         </main>
         <Footer />
