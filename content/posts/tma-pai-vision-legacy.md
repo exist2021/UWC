@@ -1,6 +1,6 @@
 ---
 title: "Dr. T.M.A. Pai's Vision: From Dream to Reality - A Legacy Assessment"
-date: '2024-08-25'
+date: '2025-09-07'
 coverImage: 'https://i.postimg.cc/MGbsNFpH/CBE13-AB8-BCF9-4513-B437-834-F1274309-E.png'
 ---
 
