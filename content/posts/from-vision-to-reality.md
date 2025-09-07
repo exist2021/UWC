@@ -38,7 +38,7 @@ Perhaps even more remarkable than ISKCON's temple network is its humanitarian ou
 The scale of this operation is staggering:
 
 - **Over 1.2 million children receive free mid-day meals daily in India alone** through the Annamrita program
-- **The Akshaya Patra Foundation, an ISKCON initiative, serves 1.76 million children daily** across 42 locations in 12 states of India
+- **The Akshaya Patra Foundation, an ISKCON initiative, serves 2.2 million children daily** across 42 locations in 12 states of India
 - **In total, ISKCON's Food for Life network provides over 1 million free meals daily worldwide**
 - **Over 8.7 billion servings of prasadam have been distributed globally**
 
