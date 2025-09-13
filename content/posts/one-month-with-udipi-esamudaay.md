@@ -1,7 +1,7 @@
 ---
 title: "One month with Udipi-esamudaay"
 date: '2025-09-08'
-coverImage: 'https://i.postimg.cc/0jB27vpw/IMG-7016.jpg'
+coverImage: 'https://i.postimg.cc/fywBYnwD/IMG-7017.jpg'
 ---
 
 If you have been following [my newsletter](https://manojnayak.beehiiv.com/), you might have heard about [esamudaay](https://esamudaay.com).
