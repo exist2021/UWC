@@ -19,7 +19,7 @@ export default function BlogPage() {
               Explore insights on communication, leadership, and vision.
             </p>
             <p className="mt-4 max-w-2xl mx-auto text-sm text-muted-foreground italic">
-              Disclaimer: The essays on this blog are AI-generated explorations of various topics and do not necessarily represent the views or opinions of UrbanWiz Communications.
+              Disclaimer: Some essays on this blog are AI-generated explorations of various topics.
             </p>
           </div>
           <BlogClientPage allPostsData={allPostsData} />

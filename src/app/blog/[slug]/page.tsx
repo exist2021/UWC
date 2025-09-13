@@ -75,7 +75,7 @@ export default async function Post({ params }: Props) {
                 <Separator className="my-8" />
                 <div className="not-prose">
                   <p className="text-sm text-muted-foreground italic text-center">
-                    Disclaimer: The essays on this blog are AI-generated explorations of various topics and do not necessarily represent the views or opinions of UrbanWiz Communications.
+                    Disclaimer: Some essays on this blog are AI-generated explorations of various topics.
                   </p>
                 </div>
             </article>
