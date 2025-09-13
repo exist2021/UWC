@@ -18,8 +18,12 @@ function ThemeToggle() {
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(storedTheme);
+    // On mount, check for theme in localStorage or default to 'light'
+    const storedTheme = localStorage.getItem('theme');
+    // We need to check if we are on the client side before accessing localStorage
+    if (typeof window !== 'undefined') {
+      setTheme(storedTheme || 'light');
+    }
   }, []);
 
   useEffect(() => {
