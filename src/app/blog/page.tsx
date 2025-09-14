@@ -2,6 +2,13 @@ import { getSortedPostsData } from '@/lib/posts';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import BlogClientPage from './BlogClientPage';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog | ClarityLink Communications',
+  description: 'Explore insights on communication, leadership, and vision.',
+};
+
 
 export default function BlogPage() {
   const allPostsData = getSortedPostsData();

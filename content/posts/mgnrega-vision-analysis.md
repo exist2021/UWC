@@ -1,4 +1,4 @@
-i---
+---
 title: "Did MGNREGA Achieve Its Vision? A Critical Blogpost Analysis"
 date: '2025-09-12'
 coverImage: 'https://i.postimg.cc/TYLYL1gF/IMG-7026.jpg'
