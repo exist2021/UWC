@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'We help visionary leaders translate big ideas into simple, actionable messages for their teams and stakeholders.',
   keywords: ['communication strategy', 'leadership', 'team alignment', 'vision translation', 'stakeholder messaging'],
   icons: {
-    icon: 'https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png',
+    icon: 'https://i.postimg.cc/G3THXLh5/B13-D1-B91-1-A5-A-45-F5-9-FDD-1186-B160-D6-F9.png',
   },
   alternates: {
     types: {

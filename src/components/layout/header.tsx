@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, Moon, Sun, Rocket } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
@@ -56,7 +57,7 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <Rocket className="h-6 w-6 text-primary" />
+            <Image src="https://i.postimg.cc/G3THXLh5/B13-D1-B91-1-A5-A-45-F5-9-FDD-1186-B160-D6-F9.png" alt="UrbanWiz Communications Logo" width={32} height={32} />
             <span className="font-bold">UrbanWiz Communications</span>
           </Link>
         </div>
@@ -89,7 +90,7 @@ export default function Header() {
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-2">
                    <Link href="/" className="flex items-center space-x-2" onClick={() => setMenuOpen(false)}>
-                      <Rocket className="h-6 w-6 text-primary" />
+                      <Image src="https://i.postimg.cc/G3THXLh5/B13-D1-B91-1-A5-A-45-F5-9-FDD-1186-B160-D6-F9.png" alt="UrbanWiz Communications Logo" width={32} height={32} />
                       <span className="font-bold">UrbanWiz</span>
                     </Link>
                 </div>
