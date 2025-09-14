@@ -1,7 +1,7 @@
 ---
 title: "Did MGNREGA Achieve Its Vision? A Critical Blogpost Analysis"
 date: '2025-09-12'
-coverImage: 'https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png'
+coverImage: 'https://i.postimg.cc/TYLYL1gF/IMG-7026.jpg'
 ---
 
 The Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA) was launched in 2005 with an ambitious vision: to enhance the livelihood security of rural households by providing at least 100 days of guaranteed wage employment each year, empowering the poorest communities and strengthening rural infrastructure. Almost two decades on, the effectiveness and fulfillment of this vision remain a lively topic of debate.
