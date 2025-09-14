@@ -5,11 +5,16 @@ import Analytics from '@/components/analytics';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'UrbanWiz Communications',
+  title: 'ClarityLink Communications',
   description: 'We help visionary leaders translate big ideas into simple, actionable messages for their teams and stakeholders.',
   keywords: ['communication strategy', 'leadership', 'team alignment', 'vision translation', 'stakeholder messaging'],
   icons: {
     icon: 'https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png',
+  },
+  alternates: {
+    types: {
+      'application/rss+xml': [{ url: 'rss.xml', title: 'ClarityLink Communications RSS Feed' }],
+    },
   },
 };
 

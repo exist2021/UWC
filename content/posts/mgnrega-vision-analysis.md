@@ -1,4 +1,4 @@
----
+i---
 title: "Did MGNREGA Achieve Its Vision? A Critical Blogpost Analysis"
 date: '2025-09-12'
 coverImage: 'https://i.postimg.cc/TYLYL1gF/IMG-7026.jpg'
@@ -53,4 +53,5 @@ Ultimately, MGNREGA’s ongoing story is one of hope, struggle, and the unflaggi
 
 ## Sources
 [1] [The effect of the Mahatma Gandhi National Rural Employment Guarantee Act on the size of outstanding debts in rural India](https://www.tandfonline.com/doi/full/10.1080/19439342.2022.2103169)
+
 [2] [A Study on the Role of MGNREGA in Fostering Economic Development via Welfare Initiatives, Employment Opportunities, and Asset Formation in Rural Bangalore](https://www.ijraset.com/best-journal/a-study-on-the-role-of-mgnrega-in-fostering-economic-development-via-welfare-initiatives-employment-opportunities-and-asset-formation-in-rural-bangalore)
