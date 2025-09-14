@@ -5,7 +5,7 @@ import Analytics from '@/components/analytics';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'ClarityLink Communications',
+  title: 'UrbanWiz Communications',
   description: 'We help visionary leaders translate big ideas into simple, actionable messages for their teams and stakeholders.',
   keywords: ['communication strategy', 'leadership', 'team alignment', 'vision translation', 'stakeholder messaging'],
   icons: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     types: {
-      'application/rss+xml': [{ url: 'rss.xml', title: 'ClarityLink Communications RSS Feed' }],
+      'application/rss+xml': [{ url: 'rss.xml', title: 'UrbanWiz Communications RSS Feed' }],
     },
   },
 };

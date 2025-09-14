@@ -5,7 +5,7 @@ import BlogClientPage from './BlogClientPage';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog | ClarityLink Communications',
+  title: 'Blog | UrbanWiz Communications',
   description: 'Explore insights on communication, leadership, and vision.',
 };
 

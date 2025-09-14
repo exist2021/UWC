@@ -5,7 +5,7 @@ const siteUrl = 'https://claritylink.com';
 
 export async function GET() {
   const feed = new RSS({
-    title: 'ClarityLink Communications Blog',
+    title: 'UrbanWiz Communications Blog',
     description: 'Insights on communication, leadership, and vision.',
     feed_url: `${siteUrl}/rss.xml`,
     site_url: siteUrl,
@@ -21,7 +21,7 @@ export async function GET() {
       url: `${siteUrl}/blog/${post.slug}`,
       guid: post.slug,
       date: post.date,
-      author: 'ClarityLink Communications',
+      author: 'UrbanWiz Communications',
     });
   });
 

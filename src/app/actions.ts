@@ -30,9 +30,9 @@ export async function sendContactMessage(data: ContactFormInputs) {
 
   try {
     const { data: emailData, error } = await resend.emails.send({
-      from: 'ClarityLink <onboarding@resend.dev>',
+      from: 'UrbanWiz <onboarding@resend.dev>',
       to: ['manoj@manojnayak.com'],
-      subject: 'New Vision Submission from ClarityLink Website',
+      subject: 'New Vision Submission from UrbanWiz Website',
       reply_to: email,
       html: `
         <p>You have a new contact form submission:</p>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, Moon, Sun } from 'lucide-react';
+import { Menu, Moon, Sun, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import Image from 'next/image';
@@ -18,21 +18,21 @@ function ThemeToggle() {
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    // On mount, check for theme in localStorage or default to 'light'
-    const storedTheme = localStorage.getItem('theme');
-    // We need to check if we are on the client side before accessing localStorage
-    if (typeof window !== 'undefined') {
-      setTheme(storedTheme || 'light');
-    }
+    const storedTheme = typeof window !== 'undefined' ? localStorage.getItem('theme') : 'light';
+    setTheme(storedTheme || 'light');
   }, []);
 
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('theme', 'dark');
+      }
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('theme', 'light');
+      }
     }
   }, [theme]);
 
@@ -57,8 +57,8 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="ClarityLink Logo" width={32} height={32} />
-            <span className="font-bold">ClarityLink Communications</span>
+            <Rocket className="h-6 w-6 text-primary" />
+            <span className="font-bold">UrbanWiz Communications</span>
           </Link>
         </div>
 
@@ -90,8 +90,8 @@ export default function Header() {
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-2">
                    <Link href="/" className="flex items-center space-x-2" onClick={() => setMenuOpen(false)}>
-                      <Image src="https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png" alt="ClarityLink Logo" width={32} height={32} />
-                      <span className="font-bold">ClarityLink</span>
+                      <Rocket className="h-6 w-6 text-primary" />
+                      <span className="font-bold">UrbanWiz</span>
                     </Link>
                 </div>
                 <nav className="mt-6 flex flex-col gap-4">
