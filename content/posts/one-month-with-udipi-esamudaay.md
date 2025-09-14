@@ -14,13 +14,13 @@ The idea that the community owns the data rather than some Giant corporation is 
 
 > But before we lose ourselves in lofty ideology let’s hit the ground and that’s literally what happened.
 
-The app got grounded and they have paused all operations as of January 2025. They are planning a comeback but it’s the case that once bitten twice shy. 🙈
+The app got grounded and they have paused all operations as of January 2025. They are planning a comeback but it’s the case of once bitten twice shy. 🙈
 
 ## What went wrong? 😑
 
-Ravi Haldipir the co-founder told me this on the first day I met him -
+[Ravi Haldipur](https://www.linkedin.com/in/ravihaldipur/) the co-founder told me this on the first day I met him -
 
-> We needed 10k deliveries every month to break even, but they were doing about 2k deliveries. Not even close to their 10k figure.
+> We needed 10k deliveries every month to break even, but we were doing about 2k deliveries. (Not even close to their 10k figure.)
 
 I asked Suraj one of their BD man, what problem they were trying to solve.
 
@@ -30,11 +30,13 @@ Merchants are looking for more customers first rather than to reduce their deliv
 
 Udipi-esamudaay in my opinion knew this very well, but to find more retail users for their merchants was far far difficult than finding businesses to onboard. But they followed what they could do rather than what they were supposed to do to win 🏆.
 
+## Madaari ka khel (Monkey's dance business model)
+
 I wanted to quote this example -
 
-Your boss fires you, but he says Wait I have an idea 💡. I have a monkey 🐵 which I can give you, you stand at the town square (tiger circle ⭕️ in Manipal), and make sure you have a tall enough stool where the monkey 🙈 can dance.
+Your boss fires you, but he says Wait I have an idea 💡. I have a monkey 🐵 which I can give you, you stand at the town square (tiger circle ⭕️ in Manipal), and make sure you have a tall enough stool on which the monkey 🙈 can dance.
 
-Now instead of teaching the monkey to dance, you take the easier route out,  you start building the tall stool. You make the most beautiful stool, **but the most critical problem to solve first is to make the monkey dance to chikni chameli or Dhl dhak karne laga!**
+Now instead of teaching the monkey to dance, you take the easier route out,  you start building the tall stool. You make the most beautiful stool, **but the most critical problem to solve first is to make the monkey dance to chikni chameli or Dhil dhak dhak karne laga!**
 
 So, I am not sure if the founders took to building the high stool first. IMHO - I think they focused on the stool first. Anyone knows that merchants are not happy with delivery apps so onboarding merchants was the easy part.
 
