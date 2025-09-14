@@ -57,7 +57,7 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="https://i.postimg.cc/G3THXLh5/B13-D1-B91-1-A5-A-45-F5-9-FDD-1186-B160-D6-F9.png" alt="UrbanWiz Communications Logo" width={32} height={32} />
+            <Image src="https://i.postimg.cc/bNZnLzff/F3-FB2-BF5-DE0-F-4419-9-A8-E-7255-A8704-CA1.png" alt="UrbanWiz Communications Logo" width={32} height={32} />
             <span className="font-bold">UrbanWiz Communications</span>
           </Link>
         </div>
@@ -90,7 +90,7 @@ export default function Header() {
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-2">
                    <Link href="/" className="flex items-center space-x-2" onClick={() => setMenuOpen(false)}>
-                      <Image src="https://i.postimg.cc/G3THXLh5/B13-D1-B91-1-A5-A-45-F5-9-FDD-1186-B160-D6-F9.png" alt="UrbanWiz Communications Logo" width={32} height={32} />
+                      <Image src="https://i.postimg.cc/bNZnLzff/F3-FB2-BF5-DE0-F-4419-9-A8-E-7255-A8704-CA1.png" alt="UrbanWiz Communications Logo" width={32} height={32} />
                       <span className="font-bold">UrbanWiz</span>
                     </Link>
                 </div>

@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `${plainTextDescription}...`,
       images: [
         {
-          url: postData.coverImage || 'https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png',
+          url: postData.coverImage || 'https://i.postimg.cc/bNZnLzff/F3-FB2-BF5-DE0-F-4419-9-A8-E-7255-A8704-CA1.png',
           width: 1200,
           height: 630,
           alt: postData.title,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: postData.title,
       description: `${plainTextDescription}...`,
-      images: [postData.coverImage || 'https://i.postimg.cc/bYWFJnc6/B879608-F-5122-4-E4-C-8-AEB-A371190-DC011.png'],
+      images: [postData.coverImage || 'https://i.postimg.cc/bNZnLzff/F3-FB2-BF5-DE0-F-4419-9-A8-E-7255-A8704-CA1.png'],
     },
   }
 }
