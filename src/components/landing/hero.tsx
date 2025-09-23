@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Atom } from 'lucide-react';
 import Link from 'next/link';
+import { ConsultationOptions } from './consultation-options';
 
 export function Hero() {
   return (
@@ -29,6 +30,7 @@ export function Hero() {
                 Get Your Free GTM Report
               </Button>
             </Link>
+            <ConsultationOptions />
           </div>
         </div>
       </div>
