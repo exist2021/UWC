@@ -20,12 +20,12 @@ export function Hero() {
             Data-driven probabilistic modeling to forecast your sales channel profitability and GTM feasibility — so you invest with confidence.
           </p>
           <div className="pt-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
-            <a href="#form-section">
+            <a href="https://jxupfodk.formester.com/f/hKegMt5NL" target="_blank" rel="noopener noreferrer">
               <Button 
                 size="lg" 
                 className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-12 py-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:pulse"
               >
-                Book Your Free GTM Consultation Call
+                Get Your Free GTM Report
               </Button>
             </a>
           </div>
