@@ -3,11 +3,11 @@
 
 import type { z } from 'zod';
 import { Resend } from 'resend';
-import { GtmRequestSchema, ConsultationRequestSchema } from '@/lib/schemas';
+import { GtmFitReportSchema, ConsultationRequestSchema } from '@/lib/schemas';
 
 
-export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
-  const validatedFields = GtmRequestSchema.safeParse(data);
+export async function submitGtmRequest(data: z.infer<typeof GtmFitReportSchema>) {
+  const validatedFields = GtmFitReportSchema.safeParse(data);
 
   if (!validatedFields.success) {
     return {
@@ -23,6 +23,15 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
     console.error('Google Script URL is not configured.');
     return { success: false, message: 'Server configuration error. Please contact support.' };
   }
+  
+  const { channelDetails, ...restOfData } = validatedFields.data;
+
+  const payload = {
+    ...restOfData,
+    salesChannels: restOfData.salesChannels.join(', '),
+    channelDetails: JSON.stringify(channelDetails), // Flatten nested object for Google Sheets
+  };
+
 
   try {
     // By creating a temporary URL and then a new Request object, we can avoid issues
@@ -33,7 +42,7 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(validatedFields.data),
+      body: JSON.stringify(payload),
     }));
     
     const result = await response.json();
@@ -42,7 +51,7 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
         console.log(`Successfully sent GTM Request for: ${validatedFields.data.name} to Google Sheet.`);
         return {
           success: true,
-          message: 'Thank you! We will analyze your data and get back to you with your report within 24 hours.',
+          message: 'Thank you for submitting your details! We will analyze your information and send you a personalized GTM Fit Report within 3 business days.',
         };
     } else {
        throw new Error(result.message || 'Unknown error from Google Script');
