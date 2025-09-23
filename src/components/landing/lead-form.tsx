@@ -76,18 +76,18 @@ export function LeadForm() {
         <div className="mx-auto max-w-2xl">
           <Card className="shadow-2xl border-t-4 border-primary bg-white/50 backdrop-blur-sm">
             <CardHeader className="text-center">
-              <CardTitle className="text-4xl font-headline text-primary">Request Your GTM Feasibility Report</CardTitle>
+              <CardTitle className="text-4xl font-headline text-primary">Book Your Free GTM Consultation</CardTitle>
               <CardDescription className="pt-2 text-lg">
-                Enter your details to get your feasibility report.
+                Enter your details to schedule a free consultation call.
               </CardDescription>
             </CardHeader>
             <CardContent>
               {isSuccess ? (
                 <div className="text-center p-8 flex flex-col items-center gap-4 animate-in fade-in zoom-in-95 duration-500">
                   <CheckCircle className="h-20 w-20 text-green-500" />
-                  <h3 className="text-3xl font-bold font-headline text-primary">Request Received!</h3>
+                  <h3 className="text-3xl font-bold font-headline text-primary">Request Sent!</h3>
                   <p className="text-muted-foreground text-lg">
-                    Thank you! We will analyze your data and get back to you within 24 hours.
+                    Thanks for reaching out! We’ll review your details and contact you soon to schedule a free consultation call.
                   </p>
                   <Button onClick={() => setIsSuccess(false)} variant="outline" className="mt-4">
                     Submit Another
@@ -230,10 +230,10 @@ export function LeadForm() {
                       {isPending ? (
                         <>
                           <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                          Analyzing...
+                          Submitting...
                         </>
                       ) : (
-                        "Request My GTM Feasibility Report"
+                        "Book Your Free GTM Consultation Call"
                       )}
                     </Button>
                   </form>

@@ -25,7 +25,7 @@ export function Hero() {
                 size="lg" 
                 className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-12 py-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:pulse"
               >
-                Get Your GTM Feasibility Assessment
+                Book Your Free GTM Consultation Call
               </Button>
             </a>
           </div>

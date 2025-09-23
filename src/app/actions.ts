@@ -23,7 +23,7 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
     console.log(reportOutput.report); // Log for verification
     return {
       success: true,
-      message: 'Thank you! We will analyze your data and get back to you within 24 hours.',
+      message: 'Thanks for reaching out! We’ll review your details and contact you soon to schedule a free consultation call.',
     };
   } catch (error) {
     console.error('Error generating report:', error);
