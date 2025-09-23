@@ -8,4 +8,7 @@ export const GtmRequestSchema = z.object({
     .url({ message: 'Please enter a valid URL.' })
     .optional()
     .or(z.literal('')),
+  salesChannel: z.string({
+    required_error: 'Please select a sales channel.',
+  }),
 });

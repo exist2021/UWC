@@ -1,69 +1,61 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, DollarSign, Target, Users } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { BotMessageSquare, Calculator, PieChart, Workflow } from 'lucide-react';
+
+const processSteps = [
+  {
+    icon: PieChart,
+    title: 'Feed Probabilities',
+    description: 'Input your sales channel data and conversion rates.',
+  },
+  {
+    icon: Workflow,
+    title: 'Markov Modeling',
+    description: 'Our AI visualizes leads flowing through probabilistic states.',
+  },
+  {
+    icon: Calculator,
+    title: 'Cost & Feasibility',
+    description: 'Analyze costs and forecast profitability with mini-charts.',
+  },
+  {
+    icon: BotMessageSquare,
+    title: 'Get Business Insights',
+    description: 'Receive actionable plans based on data-driven science.',
+  },
+];
 
 export function ProcessSummary() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
+    <section className="w-full py-20 md:py-28 lg:py-36 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Our Method</div>
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+          <div className="space-y-3">
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl text-primary">
-              A Scientific Approach to Growth
+              How GTM Lab Brings Data Science to Business Strategy
             </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-balance">
-              At GTM Lab, we combine business intuition with data science. Utilizing Markov
-              probability theory, we model your sales funnel as a series of probabilistic states —
-              from lead to prospect, prospect to buyer. We feed in lead conversion rates, sales and
-              marketing cost variables, and channel-specific data to forecast profitable GTM
-              scenarios.
+              We translate your channel probabilities, costs, and goals into actionable business
+              plans—using Markov theory and creative modeling. Feel business science in action.
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-5 lg:gap-12">
-          <div className="flex justify-center">
-            <Card className="w-48 h-48 flex flex-col items-center justify-center text-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-              <CardHeader>
-                <Users className="w-12 h-12 mx-auto text-accent" />
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step, index) => (
+            <Card
+              key={index}
+              className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-accent"
+            >
+              <CardHeader className="items-center">
+                <div className="bg-primary/10 p-4 rounded-full">
+                  <step.icon className="w-10 h-10 text-primary" />
+                </div>
               </CardHeader>
-              <CardContent>
-                <CardTitle className="text-lg font-headline">Lead</CardTitle>
+              <CardContent className="space-y-2">
+                <CardTitle className="text-xl font-headline">{step.title}</CardTitle>
+                <CardDescription>{step.description}</CardDescription>
               </CardContent>
             </Card>
-          </div>
-          <div className="hidden lg:flex justify-center items-center">
-            <ArrowRight className="w-12 h-12 text-muted-foreground" />
-          </div>
-          <div className="flex justify-center">
-            <Card className="w-48 h-48 flex flex-col items-center justify-center text-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-              <CardHeader>
-                <Target className="w-12 h-12 mx-auto text-accent" />
-              </CardHeader>
-              <CardContent>
-                <CardTitle className="text-lg font-headline">Prospect</CardTitle>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="hidden lg:flex justify-center items-center">
-            <ArrowRight className="w-12 h-12 text-muted-foreground" />
-          </div>
-          <div className="flex justify-center">
-            <Card className="w-48 h-48 flex flex-col items-center justify-center text-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-              <CardHeader>
-                <DollarSign className="w-12 h-12 mx-auto text-accent" />
-              </CardHeader>
-              <CardContent>
-                <CardTitle className="text-lg font-headline">Buyer</CardTitle>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-        <div className="text-center">
-          <p className="max-w-[700px] mx-auto text-muted-foreground md:text-lg">
-            Harness the predictive power of Markov probability theory to scientifically plan your
-            sales channels and GTM strategy. GTM Lab converts your business data into probabilistic
-            profit insights — so you know where to focus sales efforts for maximum return.
-          </p>
+          ))}
         </div>
       </div>
     </section>
