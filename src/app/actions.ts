@@ -42,7 +42,7 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
         console.log(`Successfully sent GTM Request for: ${validatedFields.data.name} to Google Sheet.`);
         return {
           success: true,
-          message: 'Thanks for reaching out! We’ll review your details and contact you soon to schedule a free consultation call.',
+          message: 'Thank you! We will analyze your data and get back to you with your report within 24 hours.',
         };
     } else {
        throw new Error(result.message || 'Unknown error from Google Script');
