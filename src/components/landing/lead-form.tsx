@@ -20,13 +20,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Loader2 } from 'lucide-react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { Textarea } from '../ui/textarea';
+
 
 type FormValues = z.infer<typeof GtmRequestSchema>;
 
@@ -40,8 +35,8 @@ export function LeadForm() {
     defaultValues: {
       name: '',
       contact: '',
-      website: '',
-      salesChannel: 'direct-sales',
+      businessName: '',
+      challenge: '',
     },
   });
 
@@ -67,18 +62,18 @@ export function LeadForm() {
         <div className="mx-auto max-w-2xl">
           <Card className="shadow-2xl border-t-4 border-primary bg-white/50 backdrop-blur-sm">
             <CardHeader className="text-center">
-              <CardTitle className="text-4xl font-headline text-primary">Get Your Feasibility Report</CardTitle>
+              <CardTitle className="text-4xl font-headline text-primary">Request Your Free Checkup</CardTitle>
               <CardDescription className="pt-2 text-lg">
-                Enter your details to receive a scientific GTM assessment.
+                Enter your details to get your free sales channel checkup.
               </CardDescription>
             </CardHeader>
             <CardContent>
               {isSuccess ? (
                 <div className="text-center p-8 flex flex-col items-center gap-4 animate-in fade-in zoom-in-95 duration-500">
                   <CheckCircle className="h-20 w-20 text-green-500" />
-                  <h3 className="text-3xl font-bold font-headline text-primary">Analysis Request Received!</h3>
+                  <h3 className="text-3xl font-bold font-headline text-primary">Request Received!</h3>
                   <p className="text-muted-foreground text-lg">
-                    Thank you! We'll be in touch with your custom report shortly.
+                    Thank you! We'll be in touch with your free checkup shortly.
                   </p>
                   <Button onClick={() => setIsSuccess(false)} variant="outline" className="mt-4">
                     Submit Another
@@ -96,7 +91,19 @@ export function LeadForm() {
                           <FormControl>
                             <Input placeholder="e.g., Jane Doe" {...field} className="py-6 text-base" />
                           </FormControl>
-                          <FormDescription>Your full name.</FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                     <FormField
+                      control={form.control}
+                      name="businessName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-lg">Business Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="e.g., The Corner Bakery" {...field} className="py-6 text-base" />
+                          </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -106,52 +113,23 @@ export function LeadForm() {
                       name="contact"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-lg">Contact (Phone/Email)</FormLabel>
+                          <FormLabel className="text-lg">Contact (Phone or Email)</FormLabel>
                           <FormControl>
                             <Input placeholder="e.g., jane@example.com" {...field} className="py-6 text-base" />
                           </FormControl>
-                          <FormDescription>We'll send the report here.</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                     <FormField
                       control={form.control}
-                      name="website"
+                      name="challenge"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-lg">Company/Website</FormLabel>
+                          <FormLabel className="text-lg">Biggest Sales Challenge</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., https://yourcompany.com" {...field} className="py-6 text-base" />
+                            <Textarea placeholder="e.g., Getting more customers through the door." {...field} className="py-4 text-base" />
                           </FormControl>
-                          <FormDescription>Your company's official website.</FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="salesChannel"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-lg">Primary Sales Channel</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl>
-                              <SelectTrigger className="py-6 text-base">
-                                <SelectValue placeholder="Select a channel to analyze" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="direct-sales">Direct Sales</SelectItem>
-                              <SelectItem value="content-marketing">Content Marketing</SelectItem>
-                              <SelectItem value="paid-ads">Paid Ads</SelectItem>
-                              <SelectItem value="affiliate">Affiliate/Partnerships</SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormDescription>
-                            Which sales channel are you most interested in modeling?
-                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -168,7 +146,7 @@ export function LeadForm() {
                           Analyzing...
                         </>
                       ) : (
-                        "Let's Analyze!"
+                        "Send Me My Free Checkup"
                       )}
                     </Button>
                   </form>

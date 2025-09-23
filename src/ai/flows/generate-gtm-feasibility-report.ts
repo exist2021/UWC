@@ -14,7 +14,8 @@ import {z} from 'genkit';
 const GenerateGTMFeasibilityReportInputSchema = z.object({
   name: z.string().describe('The name of the user requesting the report.'),
   contact: z.string().describe('The contact information (phone/email) of the user.'),
-  website: z.string().optional().describe('The website of the user (optional).'),
+  website: z.string().optional().describe('The business name of the user (optional).'),
+  challenge: z.string().describe('The user\'s biggest sales challenge.'),
 });
 export type GenerateGTMFeasibilityReportInput = z.infer<
   typeof GenerateGTMFeasibilityReportInputSchema
@@ -37,26 +38,21 @@ const prompt = ai.definePrompt({
   name: 'generateGTMFeasibilityReportPrompt',
   input: {schema: GenerateGTMFeasibilityReportInputSchema},
   output: {schema: GenerateGTMFeasibilityReportOutputSchema},
-  prompt: `You are an expert Go-To-Market (GTM) consultant.
-  Based on the information provided, generate a custom GTM feasibility report.
-  Consider various sales channels and their potential profitability using Markov probability theory.
-  Explain which type of Markov Model is most applicable in this situation, and why.
+  prompt: `You are an expert Go-To-Market (GTM) consultant for small businesses.
+  Based on the information provided, generate a custom GTM feasibility report (a sales channel checkup).
+  The tone should be simple, encouraging, and easy for a non-expert to understand.
 
   User Name: {{{name}}}
+  Business Name: {{{website}}}
   Contact Information: {{{contact}}}
-  Website: {{{website}}}
+  Biggest Sales Challenge: {{{challenge}}}
 
-  Report should include actionable insights and recommendations.
-  The report should be concise, clear, and easy to understand for founders, marketing leaders, and investors.
-  Focus on practical outcomes and potential ROI.
-  The report should be structured as follows:
-
-  1. Executive Summary
-  2. Methodology (Markov Probability Theory Explanation)
-  3. Sales Channel Analysis
-  4. Profitability Forecast
-  5. Recommendations
-  6. Conclusion
+  The report should be a "Free Sales Channel Checkup" and include:
+  1. A brief, encouraging introduction acknowledging their sales challenge.
+  2. An explanation of which sales channels might be best for their business and why. Use simple terms.
+  3. Clear, actionable first steps they can take.
+  4. An explanation of why focusing on profitable channels is important.
+  5. A concluding paragraph offering further help.
   `,
 });
 

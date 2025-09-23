@@ -14,24 +14,27 @@ export function Footer() {
               </p>
             </div>
         </div>
-        <div className="flex flex-col items-center md:items-end gap-3">
-           <p className="text-sm text-muted-foreground font-semibold">Dr. Evelyn Reed, PhD</p>
-          <div className="flex gap-4">
-            <Link href="#" aria-label="Twitter">
-              <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
-            </Link>
-            <Link href="#" aria-label="LinkedIn">
-              <Linkedin className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
-            </Link>
-            <Link href="#" aria-label="GitHub">
-              <Github className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
-            </Link>
-          </div>
-          <a
+        <div className="flex flex-col items-center md:items-end gap-3 text-sm text-muted-foreground">
+           <p className="font-semibold">Dr. Evelyn Reed</p>
+            <a
               href="mailto:contact@gtmlab.dev"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="hover:text-primary transition-colors"
             >
               contact@gtmlab.dev
+            </a>
+             <a
+              href="tel:5551234567"
+              className="hover:text-primary transition-colors"
+            >
+              (555) 123-4567
+            </a>
+             <a
+              href="https://www.gtmlab.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              www.gtmlab.dev
             </a>
         </div>
       </div>
