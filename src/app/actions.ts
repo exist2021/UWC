@@ -2,8 +2,7 @@
 'use server';
 
 import type { z } from 'zod';
-import { Resend } from 'resend';
-import { GtmFitReportSchema, ConsultationRequestSchema } from '@/lib/schemas';
+import { GtmFitReportSchema } from '@/lib/schemas';
 
 
 export async function submitGtmRequest(data: z.infer<typeof GtmFitReportSchema>) {
@@ -59,51 +58,5 @@ export async function submitGtmRequest(data: z.infer<typeof GtmFitReportSchema>)
   } catch (error) {
     console.error('Error submitting to Google Sheet:', error);
     return { success: false, message: 'An unexpected error occurred while saving your request. Please try again.' };
-  }
-}
-
-export async function submitConsultationRequest(data: z.infer<typeof ConsultationRequestSchema>) {
-  const validatedFields = ConsultationRequestSchema.safeParse(data);
-
-  if (!validatedFields.success) {
-    return {
-      success: false,
-      message: 'Invalid data provided.',
-      errors: validatedFields.error.flatten().fieldErrors,
-    };
-  }
-
-  const resendApiKey = process.env.RESEND_API_KEY;
-  const emailTo = process.env.RESEND_EMAIL_TO;
-
-  if (!resendApiKey || !emailTo) {
-    console.error('Resend API Key or recipient email is not configured.');
-    return { success: false, message: 'Server configuration error. Please contact support.' };
-  }
-
-  const resend = new Resend(resendApiKey);
-
-  try {
-    const { data: validatedData } = validatedFields;
-    await resend.emails.send({
-      from: 'GTM Lab <onboarding@resend.dev>',
-      to: emailTo,
-      subject: 'New Consultation Request from GTM Lab',
-      html: `
-        <h1>New Consultation Request</h1>
-        <p><strong>Name:</strong> ${validatedData.name}</p>
-        <p><strong>Phone:</strong> ${validatedData.phone}</p>
-        <p><strong>Email:</strong> ${validatedData.email || 'Not provided'}</p>
-        <p><strong>Business Name:</strong> ${validatedData.businessName || 'Not provided'}</p>
-      `,
-    });
-
-    return {
-      success: true,
-      message: 'Thanks for reaching out! We’ll be in touch to schedule your call.',
-    };
-  } catch (error) {
-    console.error('Error sending email with Resend:', error);
-    return { success: false, message: 'An unexpected error occurred while sending your request. Please try again.' };
   }
 }

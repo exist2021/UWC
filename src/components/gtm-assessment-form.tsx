@@ -72,22 +72,30 @@ export function GtmAssessmentForm() {
   const selectedChannels = form.watch('salesChannels');
   
   useEffect(() => {
-    // Clear details for channels that are no longer selected
-    const currentChannelDetails = form.getValues('channelDetails');
+    const currentChannelDetails = form.getValues('channelDetails') || {};
     const newChannelDetails: { [key: string]: any } = {};
+    
     selectedChannels.forEach(channelId => {
-      if (currentChannelDetails[channelId]) {
-        newChannelDetails[channelId] = currentChannelDetails[channelId];
-      } else {
-        // Initialize if it's a new selection
-        newChannelDetails[channelId] = {
+        newChannelDetails[channelId] = currentChannelDetails[channelId] || {
             leadToProspect: '',
             prospectToCustomer: '',
             salesCost: '',
             marketingCost: '',
         };
-      }
     });
+
+    const oldChannelIds = Object.keys(currentChannelDetails);
+    const deselectedChannelIds = oldChannelIds.filter(id => !selectedChannels.includes(id));
+
+    if (deselectedChannelIds.length > 0) {
+        deselectedChannelIds.forEach(id => {
+             form.unregister(`channelDetails.${id}.leadToProspect` as const);
+             form.unregister(`channelDetails.${id}.prospectToCustomer` as const);
+             form.unregister(`channelDetails.${id}.salesCost` as const);
+             form.unregister(`channelDetails.${id}.marketingCost` as const);
+        });
+    }
+
     form.setValue('channelDetails', newChannelDetails);
   }, [selectedChannels, form]);
 
@@ -241,9 +249,9 @@ export function GtmAssessmentForm() {
                                                 checked={field.value?.includes(item.id)}
                                                 onCheckedChange={(checked) => {
                                                     return checked
-                                                    ? field.onChange([...field.value, item.id])
+                                                    ? field.onChange([...(field.value || []), item.id])
                                                     : field.onChange(
-                                                        field.value?.filter(
+                                                        (field.value || [])?.filter(
                                                         (value) => value !== item.id
                                                         )
                                                     )
@@ -272,28 +280,28 @@ export function GtmAssessmentForm() {
                                                 <FormField control={form.control} name={`channelDetails.${channelId}.leadToProspect`} render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel>Lead to Prospect Rate (%)</FormLabel>
-                                                        <FormControl><Input type="number" placeholder="e.g., 10" {...field} className="text-base" /></FormControl>
+                                                        <FormControl><Input type="number" placeholder="e.g., 10" {...field} value={field.value ?? ''} className="text-base" /></FormControl>
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}/>
                                                 <FormField control={form.control} name={`channelDetails.${channelId}.prospectToCustomer`} render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel>Prospect to Customer Rate (%)</FormLabel>
-                                                        <FormControl><Input type="number" placeholder="e.g., 25" {...field} className="text-base" /></FormControl>
+                                                        <FormControl><Input type="number" placeholder="e.g., 25" {...field} value={field.value ?? ''} className="text-base" /></FormControl>
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}/>
                                                 <FormField control={form.control} name={`channelDetails.${channelId}.salesCost`} render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel>Avg. Monthly Sales Cost</FormLabel>
-                                                        <FormControl><Input type="number" placeholder="e.g., 50000" {...field} className="text-base" /></FormControl>
+                                                        <FormControl><Input type="number" placeholder="e.g., 50000" {...field} value={field.value ?? ''} className="text-base" /></FormControl>
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}/>
                                                 <FormField control={form.control} name={`channelDetails.${channelId}.marketingCost`} render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel>Avg. Monthly Marketing Cost</FormLabel>
-                                                        <FormControl><Input type="number" placeholder="e.g., 25000" {...field} className="text-base" /></FormControl>
+                                                        <FormControl><Input type="number" placeholder="e.g., 25000" {...field} value={field.value ?? ''} className="text-base" /></FormControl>
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}/>

@@ -29,15 +29,6 @@ export function Hero() {
                 Get Your Free GTM Report
               </Button>
             </Link>
-            <Link href="#consultation-form">
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="w-full text-lg px-8 py-7 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              >
-                Book a Consultation Call
-              </Button>
-            </Link>
           </div>
         </div>
       </div>
