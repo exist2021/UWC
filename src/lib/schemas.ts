@@ -1,20 +1,21 @@
+
 import { z } from 'zod';
 
 const channelDetailSchema = z.object({
   leadToProspect: z.preprocess(
-    (a) => a === '' ? undefined : parseFloat(z.string().parse(a)),
+    (a) => (a === '' || a === null ? undefined : parseFloat(String(a))),
     z.number().min(0, "Rate must be between 0 and 100").max(100, "Rate must be between 0 and 100")
   ).optional(),
   prospectToCustomer: z.preprocess(
-    (a) => a === '' ? undefined : parseFloat(z.string().parse(a)),
+    (a) => (a === '' || a === null ? undefined : parseFloat(String(a))),
     z.number().min(0, "Rate must be between 0 and 100").max(100, "Rate must be between 0 and 100")
   ).optional(),
   salesCost: z.preprocess(
-    (a) => a === '' ? undefined : parseFloat(z.string().parse(a)),
+    (a) => (a === '' || a === null ? undefined : parseFloat(String(a))),
     z.number().min(0, "Cost must be a positive number")
   ).optional(),
   marketingCost: z.preprocess(
-    (a) => a === '' ? undefined : parseFloat(z.string().parse(a)),
+    (a) => (a === '' || a === null ? undefined : parseFloat(String(a))),
     z.number().min(0, "Cost must be a positive number")
   ).optional(),
 });
