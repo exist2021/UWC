@@ -2,7 +2,7 @@
 'use server';
 
 import type { z } from 'zod';
-import { GtmRequestSchema } from '@/lib/schemas';
+import { GtmRequestSchema, ConsultationRequestSchema } from '@/lib/schemas';
 
 
 export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
@@ -42,6 +42,59 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
         return {
           success: true,
           message: 'Thanks for reaching out! We’ll review your details and contact you soon to schedule a free consultation call.',
+        };
+    } else {
+       throw new Error(result.message || 'Unknown error from Google Script');
+    }
+  } catch (error) {
+    console.error('Error submitting to Google Sheet:', error);
+    return { success: false, message: 'An unexpected error occurred while saving your request. Please try again.' };
+  }
+}
+
+export async function submitConsultationRequest(data: z.infer<typeof ConsultationRequestSchema>) {
+  const validatedFields = ConsultationRequestSchema.safeParse(data);
+
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      message: 'Invalid data provided.',
+      errors: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+  
+  const googleScriptUrl = process.env.GOOGLE_SCRIPT_URL;
+
+  if (!googleScriptUrl) {
+    console.error('Google Script URL is not configured.');
+    return { success: false, message: 'Server configuration error. Please contact support.' };
+  }
+
+  try {
+    const url = new URL(googleScriptUrl);
+    const response = await fetch(new Request(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // Adapt data for the Google Sheet
+      body: JSON.stringify({
+        name: validatedFields.data.name,
+        productName: validatedFields.data.businessName,
+        contact: `${validatedFields.data.phone} / ${validatedFields.data.email}`,
+        role: 'Consultation Request',
+        challenge: '',
+        salesChannels: [],
+      }),
+    }));
+    
+    const result = await response.json();
+
+    if (result.success) {
+        console.log(`Successfully sent Consultation Request for: ${validatedFields.data.name} to Google Sheet.`);
+        return {
+          success: true,
+          message: 'Thanks for reaching out! We’ll be in touch to schedule your call.',
         };
     } else {
        throw new Error(result.message || 'Unknown error from Google Script');

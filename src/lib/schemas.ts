@@ -12,3 +12,10 @@ export const GtmRequestSchema = z.object({
     message: 'You have to select at least one sales channel.',
   }),
 });
+
+export const ConsultationRequestSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  phone: z.string().min(5, { message: 'Please enter a valid phone number.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }).optional().or(z.literal('')),
+  businessName: z.string().optional(),
+});

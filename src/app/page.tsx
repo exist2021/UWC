@@ -4,6 +4,7 @@ import { ProcessSummary } from '@/components/landing/process-summary';
 import { Evaluation } from '@/components/landing/evaluation';
 import { Faq } from '@/components/landing/faq';
 import { Resources } from '@/components/landing/resources';
+import { ConsultationForm } from '@/components/landing/consultation-form';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <Hero />
         <Evaluation />
         <ProcessSummary />
+        <ConsultationForm />
         <Resources />
         <Faq />
       </main>
