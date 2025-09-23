@@ -71,7 +71,7 @@ export function LeadForm() {
   };
 
   return (
-    <section id="form-section" className="w-full py-20 md:py-28 lg:py-36 bg-background">
+    <section id="form-section" className="w-full py-20 md:py-28 lg:py-32 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-2xl">
           <Card className="shadow-2xl border-t-4 border-primary bg-white/50 backdrop-blur-sm">
@@ -151,6 +151,7 @@ export function LeadForm() {
                               <SelectItem value="founder">Founder</SelectItem>
                               <SelectItem value="sales_manager">Sales Manager</SelectItem>
                               <SelectItem value="marketing_manager">Marketing Manager</SelectItem>
+                              <SelectItem value="product_manager">Product Manager</SelectItem>
                               <SelectItem value="other">Other</SelectItem>
                             </SelectContent>
                           </Select>

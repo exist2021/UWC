@@ -12,8 +12,8 @@
     --popover-foreground: 224 71% 4%;
     --primary: 217 89% 34%; /* Deep Blue */
     --primary-foreground: 0 0% 98%;
-    --secondary: 210 40% 98%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 175 50% 95%; /* Soft Teal/Cyan */
+    --secondary-foreground: 175 30% 25%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 28 100% 50%; /* Vibrant Orange */
@@ -47,8 +47,8 @@
     --popover-foreground: 210 40% 98%;
     --primary: 217 89% 34%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 175 33% 17%;
+    --secondary-foreground: 175 40% 90%;
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
     --accent: 28 100% 50%;

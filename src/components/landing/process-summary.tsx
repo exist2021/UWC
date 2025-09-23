@@ -4,25 +4,25 @@ import { BotMessageSquare, Calculator, PieChart, Workflow } from 'lucide-react';
 const processSteps = [
   {
     icon: PieChart,
-    title: '1. Share your channel data — conversion rates, sales/marketing costs',
+    title: '1. Share lead conversion & sales cost data by channel',
   },
   {
     icon: Workflow,
-    title: '2. We model and simulate your GTM funnel using Markov probability theory',
+    title: '2. We model your GTM funnel using Markov probability theory',
   },
   {
     icon: Calculator,
-    title: '3. Receive a tailored feasibility report with key metrics and recommendations',
+    title: '3. Receive a detailed feasibility report with metrics & recommendations',
   },
   {
     icon: BotMessageSquare,
-    title: '4. Make confident decisions to launch or improve your GTM strategy',
+    title: '4. Make confident launch or scaling decisions',
   },
 ];
 
 export function ProcessSummary() {
   return (
-    <section className="w-full py-20 md:py-28 lg:py-36 bg-secondary/30">
+    <section className="w-full py-20 md:py-28 lg:py-32 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-3">
@@ -52,23 +52,4 @@ export function ProcessSummary() {
       </div>
     </section>
   );
-}
-
-function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  )
 }
