@@ -13,7 +13,7 @@ import { Mail, MessageCircle } from 'lucide-react';
 
 export function ConsultationOptions() {
   const whatsappNumber = '919286039114';
-  const email = 'contact@gtmlab.dev';
+  const email = 'manoj@manojnayak.com';
   const subject = 'GTM Consultation Request';
   const body = "Hello, I'd like to book a free GTM consultation call.";
   const encodedBody = encodeURIComponent(body);
