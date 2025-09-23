@@ -1,3 +1,4 @@
+
 import { Atom } from 'lucide-react';
 
 export function Footer() {
@@ -14,14 +15,9 @@ export function Footer() {
           </div>
         </div>
         <div className="text-right">
-          <p className="text-sm font-medium text-foreground">
-            <a href="https://manojnayak.com" target="_blank" rel="noopener noreferrer" className="hover:underline">
-              Manoj Nayak
-            </a>
-          </p>
           <p className="text-sm text-muted-foreground">
-            <a href="https://wa.me/919286039114" target="_blank" rel="noopener noreferrer" className="hover:underline">
-              +91 92860 39114
+            <a href="https://manojnayak.com" target="_blank" rel="noopener noreferrer" className="hover:underline">
+              Vibe coded by Manoj Nayak
             </a>
           </p>
         </div>
