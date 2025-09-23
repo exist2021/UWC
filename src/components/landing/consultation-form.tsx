@@ -86,7 +86,7 @@ export function ConsultationForm() {
                         <FormItem>
                           <FormLabel className="text-lg">Name*</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., Jane Doe" {...field} className="py-6 text-base" />
+                            <Input placeholder="e.g., Priya Sharma" {...field} className="py-6 text-base" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -99,7 +99,7 @@ export function ConsultationForm() {
                         <FormItem>
                           <FormLabel className="text-lg">Phone Number*</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., +1 555-123-4567" {...field} className="py-6 text-base" />
+                            <Input placeholder="e.g., +91 98765 43210" {...field} className="py-6 text-base" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -112,7 +112,7 @@ export function ConsultationForm() {
                         <FormItem>
                           <FormLabel className="text-lg">Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., jane@example.com" {...field} className="py-6 text-base" />
+                            <Input placeholder="e.g., priya@example.com" {...field} className="py-6 text-base" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -125,7 +125,7 @@ export function ConsultationForm() {
                         <FormItem>
                           <FormLabel className="text-lg">Business Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., Acme Inc." {...field} className="py-6 text-base" />
+                            <Input placeholder="e.g., Sharma Enterprises" {...field} className="py-6 text-base" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
