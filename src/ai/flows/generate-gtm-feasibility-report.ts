@@ -1,11 +1,7 @@
 
 'use server';
 /**
- * @fileOverview Generates a custom GTM feasibility report using AI based on user-submitted business data.
- *
- * - generateGTMFeasibilityReport - A function that triggers the GTM feasibility report generation process.
- * - GenerateGTMFeasibilityReportInput - The input type for the generateGTMFeasibilityReport function.
- * - GenerateGTMFeasibilityReportOutput - The return type for the generateGTMFeasibilityReport function.
+ * @fileOverview This file is currently not in use. The form submission is handled by a Google Apps Script.
  */
 
 import {ai} from '@/ai/genkit';
@@ -27,7 +23,10 @@ export type GenerateGTMFeasibilityReportOutput = z.infer<
 export async function generateGTMFeasibilityReport(
   input: GenerateGTMFeasibilityReportInput
 ): Promise<GenerateGTMFeasibilityReportOutput> {
-  return generateGTMFeasibilityReportFlow(input);
+  // This flow is currently not being used by the application.
+  // The form submission logic has been updated to send data to a Google Sheet.
+  // To re-enable this, you would need to update the `submitGtmRequest` function in `src/app/actions.ts`.
+  return Promise.resolve({ report: 'This AI flow is currently disabled.' });
 }
 
 const prompt = ai.definePrompt({

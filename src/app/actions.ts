@@ -2,7 +2,6 @@
 'use server';
 
 import type { z } from 'zod';
-import { generateGTMFeasibilityReport } from '@/ai/flows/generate-gtm-feasibility-report';
 import { GtmRequestSchema } from '@/lib/schemas';
 
 
@@ -17,16 +16,36 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
     };
   }
 
+  const googleScriptUrl = process.env.GOOGLE_SCRIPT_URL;
+
+  if (!googleScriptUrl) {
+    console.error('Google Script URL is not configured.');
+    return { success: false, message: 'Server configuration error. Please contact support.' };
+  }
+
   try {
-    const reportOutput = await generateGTMFeasibilityReport(validatedFields.data);
-    console.log(`Generated GTM Report for: ${validatedFields.data.name}`);
-    console.log(reportOutput.report); // Log for verification
-    return {
-      success: true,
-      message: 'Thanks for reaching out! We’ll review your details and contact you soon to schedule a free consultation call.',
-    };
+    const response = await fetch(googleScriptUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(validatedFields.data),
+      redirect: 'follow',
+    });
+    
+    const result = await response.json();
+
+    if (result.success) {
+        console.log(`Successfully sent GTM Request for: ${validatedFields.data.name} to Google Sheet.`);
+        return {
+          success: true,
+          message: 'Thanks for reaching out! We’ll review your details and contact you soon to schedule a free consultation call.',
+        };
+    } else {
+       throw new Error(result.message || 'Unknown error from Google Script');
+    }
   } catch (error) {
-    console.error('Error generating report:', error);
-    return { success: false, message: 'An unexpected error occurred. Please try again.' };
+    console.error('Error submitting to Google Sheet:', error);
+    return { success: false, message: 'An unexpected error occurred while saving your request. Please try again.' };
   }
 }
