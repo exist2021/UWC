@@ -24,14 +24,16 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
   }
 
   try {
-    const response = await fetch(googleScriptUrl, {
+    // By creating a temporary URL and then a new Request object, we can avoid issues
+    // with Google Apps Script redirects that can cause the POST body to be lost.
+    const url = new URL(googleScriptUrl);
+    const response = await fetch(new Request(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(validatedFields.data),
-      redirect: 'follow',
-    });
+    }));
     
     const result = await response.json();
 
