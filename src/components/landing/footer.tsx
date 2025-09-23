@@ -1,5 +1,4 @@
-import { Github, Linkedin, Twitter, Atom } from 'lucide-react';
-import Link from 'next/link';
+import { Atom } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -13,29 +12,6 @@ export function Footer() {
                 &copy; {new Date().getFullYear()} GTM Lab. All rights reserved.
               </p>
             </div>
-        </div>
-        <div className="flex flex-col items-center md:items-end gap-3 text-sm text-muted-foreground">
-           <p className="font-semibold">Dr. Evelyn Reed</p>
-            <a
-              href="mailto:contact@gtmlab.dev"
-              className="hover:text-primary transition-colors"
-            >
-              contact@gtmlab.dev
-            </a>
-             <a
-              href="tel:5551234567"
-              className="hover:text-primary transition-colors"
-            >
-              (555) 123-4567
-            </a>
-             <a
-              href="https://www.gtmlab.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-            >
-              www.gtmlab.dev
-            </a>
         </div>
       </div>
     </footer>
