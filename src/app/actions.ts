@@ -13,19 +13,17 @@ export async function submitGtmRequest(data: z.infer<typeof GtmRequestSchema>) {
     return {
       success: false,
       message: 'Invalid data provided.',
+      errors: validatedFields.error.flatten().fieldErrors,
     };
   }
 
   try {
-    // In a real app, you might want to do something with the report, like email it.
-    // For now, we'll just generate it and log it to the server console.
-    const { name, contact, businessName, challenge } = validatedFields.data;
-    const reportOutput = await generateGTMFeasibilityReport({ name, contact, website: businessName, challenge});
+    const reportOutput = await generateGTMFeasibilityReport(validatedFields.data);
     console.log(`Generated GTM Report for: ${validatedFields.data.name}`);
     console.log(reportOutput.report); // Log for verification
     return {
       success: true,
-      message: 'Thank you! We will be in touch with your custom analysis shortly.',
+      message: 'Thank you! We will analyze your data and get back to you within 24 hours.',
     };
   } catch (error) {
     console.error('Error generating report:', error);

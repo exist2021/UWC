@@ -14,10 +14,10 @@ export function Hero() {
             </h1>
           </div>
           <p className="max-w-[800px] font-headline text-2xl font-semibold text-foreground/90 md:text-3xl lg:text-4xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-            Smart Sales and Marketing Plans That Actually Work
+            Scientific Evaluation of Your Go-To-Market Fit
           </p>
           <p className="max-w-[700px] text-lg text-foreground/70 md:text-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-400">
-            Helping small businesses grow by turning leads into paying customers using simple, proven methods.
+            Data-driven probabilistic modeling to forecast your sales channel profitability and GTM feasibility — so you invest with confidence.
           </p>
           <div className="pt-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
             <a href="#form-section">
@@ -25,7 +25,7 @@ export function Hero() {
                 size="lg" 
                 className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-12 py-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:pulse"
               >
-                Get Your Free Sales Channel Checkup
+                Get Your GTM Feasibility Assessment
               </Button>
             </a>
           </div>

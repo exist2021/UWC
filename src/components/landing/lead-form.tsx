@@ -21,6 +21,18 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Loader2 } from 'lucide-react';
 import { Textarea } from '../ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Checkbox } from '../ui/checkbox';
+
+const salesChannels = [
+  { id: 'field_sales', label: 'Field Sales' },
+  { id: 'inside_sales', label: 'Inside Sales' },
+  { id: 'channel_partners', label: 'Channel Partners' },
+  { id: 'digital_marketing', label: 'Digital Marketing' },
+  { id: 'social_media', label: 'Social Media' },
+  { id: 'events', label: 'Events' },
+  { id: 'other', label: 'Other' },
+];
 
 
 type FormValues = z.infer<typeof GtmRequestSchema>;
@@ -35,8 +47,10 @@ export function LeadForm() {
     defaultValues: {
       name: '',
       contact: '',
-      businessName: '',
+      productName: '',
       challenge: '',
+      role: undefined,
+      salesChannels: [],
     },
   });
 
@@ -62,9 +76,9 @@ export function LeadForm() {
         <div className="mx-auto max-w-2xl">
           <Card className="shadow-2xl border-t-4 border-primary bg-white/50 backdrop-blur-sm">
             <CardHeader className="text-center">
-              <CardTitle className="text-4xl font-headline text-primary">Request Your Free Checkup</CardTitle>
+              <CardTitle className="text-4xl font-headline text-primary">Request Your GTM Feasibility Report</CardTitle>
               <CardDescription className="pt-2 text-lg">
-                Enter your details to get your free sales channel checkup.
+                Enter your details to get your feasibility report.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -73,7 +87,7 @@ export function LeadForm() {
                   <CheckCircle className="h-20 w-20 text-green-500" />
                   <h3 className="text-3xl font-bold font-headline text-primary">Request Received!</h3>
                   <p className="text-muted-foreground text-lg">
-                    Thank you! We'll be in touch with your free checkup shortly.
+                    Thank you! We will analyze your data and get back to you within 24 hours.
                   </p>
                   <Button onClick={() => setIsSuccess(false)} variant="outline" className="mt-4">
                     Submit Another
@@ -97,12 +111,12 @@ export function LeadForm() {
                     />
                      <FormField
                       control={form.control}
-                      name="businessName"
+                      name="productName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-lg">Business Name</FormLabel>
+                          <FormLabel className="text-lg">Company/Product Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., The Corner Bakery" {...field} className="py-6 text-base" />
+                            <Input placeholder="e.g., Acme Inc." {...field} className="py-6 text-base" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -113,7 +127,7 @@ export function LeadForm() {
                       name="contact"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-lg">Contact (Phone or Email)</FormLabel>
+                          <FormLabel className="text-lg">Email or Phone</FormLabel>
                           <FormControl>
                             <Input placeholder="e.g., jane@example.com" {...field} className="py-6 text-base" />
                           </FormControl>
@@ -123,17 +137,89 @@ export function LeadForm() {
                     />
                     <FormField
                       control={form.control}
+                      name="role"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-lg">Your Role</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger className="py-6 text-base">
+                                <SelectValue placeholder="Select your role" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="founder">Founder</SelectItem>
+                              <SelectItem value="sales_manager">Sales Manager</SelectItem>
+                              <SelectItem value="marketing_manager">Marketing Manager</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
                       name="challenge"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-lg">Biggest Sales Challenge</FormLabel>
+                          <FormLabel className="text-lg">Key GTM Challenge or Objective</FormLabel>
                           <FormControl>
-                            <Textarea placeholder="e.g., Getting more customers through the door." {...field} className="py-4 text-base" />
+                            <Textarea placeholder="e.g., Increase conversion rates for digital channels." {...field} className="py-4 text-base" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
+                     <FormField
+                      control={form.control}
+                      name="salesChannels"
+                      render={() => (
+                        <FormItem>
+                          <div className="mb-4">
+                            <FormLabel className="text-lg">Sales Channels</FormLabel>
+                            <FormDescription>
+                              Select the sales channels you are using or considering.
+                            </FormDescription>
+                          </div>
+                          {salesChannels.map((item) => (
+                            <FormField
+                              key={item.id}
+                              control={form.control}
+                              name="salesChannels"
+                              render={({ field }) => {
+                                return (
+                                  <FormItem
+                                    key={item.id}
+                                    className="flex flex-row items-start space-x-3 space-y-0"
+                                  >
+                                    <FormControl>
+                                      <Checkbox
+                                        checked={field.value?.includes(item.id)}
+                                        onCheckedChange={(checked) => {
+                                          return checked
+                                            ? field.onChange([...(field.value || []), item.id])
+                                            : field.onChange(
+                                                field.value?.filter(
+                                                  (value) => value !== item.id
+                                                )
+                                              )
+                                        }}
+                                      />
+                                    </FormControl>
+                                    <FormLabel className="font-normal text-base">
+                                      {item.label}
+                                    </FormLabel>
+                                  </FormItem>
+                                )
+                              }}
+                            />
+                          ))}
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
 
                     <Button
                       type="submit"
@@ -146,7 +232,7 @@ export function LeadForm() {
                           Analyzing...
                         </>
                       ) : (
-                        "Send Me My Free Checkup"
+                        "Request My GTM Feasibility Report"
                       )}
                     </Button>
                   </form>

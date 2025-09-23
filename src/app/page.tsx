@@ -2,12 +2,14 @@ import { Footer } from '@/components/landing/footer';
 import { Hero } from '@/components/landing/hero';
 import { LeadForm } from '@/components/landing/lead-form';
 import { ProcessSummary } from '@/components/landing/process-summary';
+import { Evaluation } from '@/components/landing/evaluation';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-grow">
         <Hero />
+        <Evaluation />
         <ProcessSummary />
         <LeadForm />
       </main>

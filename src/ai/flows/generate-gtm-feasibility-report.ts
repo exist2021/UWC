@@ -10,15 +10,11 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { GtmRequestSchema } from '@/lib/schemas';
 
-const GenerateGTMFeasibilityReportInputSchema = z.object({
-  name: z.string().describe('The name of the user requesting the report.'),
-  contact: z.string().describe('The contact information (phone/email) of the user.'),
-  website: z.string().optional().describe('The business name of the user (optional).'),
-  challenge: z.string().describe('The user\'s biggest sales challenge.'),
-});
+
 export type GenerateGTMFeasibilityReportInput = z.infer<
-  typeof GenerateGTMFeasibilityReportInputSchema
+  typeof GtmRequestSchema
 >;
 
 const GenerateGTMFeasibilityReportOutputSchema = z.object({
@@ -36,30 +32,33 @@ export async function generateGTMFeasibilityReport(
 
 const prompt = ai.definePrompt({
   name: 'generateGTMFeasibilityReportPrompt',
-  input: {schema: GenerateGTMFeasibilityReportInputSchema},
+  input: {schema: GtmRequestSchema},
   output: {schema: GenerateGTMFeasibilityReportOutputSchema},
-  prompt: `You are an expert Go-To-Market (GTM) consultant for small businesses.
-  Based on the information provided, generate a custom GTM feasibility report (a sales channel checkup).
-  The tone should be simple, encouraging, and easy for a non-expert to understand.
+  prompt: `You are an expert Go-To-Market (GTM) consultant for businesses.
+  Based on the information provided, generate a custom GTM feasibility report.
+  The tone should be professional, data-driven, and insightful.
 
   User Name: {{{name}}}
-  Business Name: {{{website}}}
+  Company/Product: {{{productName}}}
+  Role: {{{role}}}
   Contact Information: {{{contact}}}
-  Biggest Sales Challenge: {{{challenge}}}
+  Key GTM Challenge: {{{challenge}}}
+  Sales Channels: {{{salesChannels}}}
 
-  The report should be a "Free Sales Channel Checkup" and include:
-  1. A brief, encouraging introduction acknowledging their sales challenge.
-  2. An explanation of which sales channels might be best for their business and why. Use simple terms.
-  3. Clear, actionable first steps they can take.
-  4. An explanation of why focusing on profitable channels is important.
-  5. A concluding paragraph offering further help.
+  The report should be a "GTM Feasibility Assessment" and include:
+  1. A brief introduction acknowledging their GTM challenge.
+  2. An analysis of the selected sales channels, considering their role and challenge.
+  3. Discuss potential pros and cons for the selected channels.
+  4. Provide clear, actionable first steps based on data-driven principles.
+  5. An explanation of why a scientific GTM evaluation is critical.
+  6. A concluding paragraph offering further, more detailed analysis.
   `,
 });
 
 const generateGTMFeasibilityReportFlow = ai.defineFlow(
   {
     name: 'generateGTMFeasibilityReportFlow',
-    inputSchema: GenerateGTMFeasibilityReportInputSchema,
+    inputSchema: GtmRequestSchema,
     outputSchema: GenerateGTMFeasibilityReportOutputSchema,
   },
   async input => {
