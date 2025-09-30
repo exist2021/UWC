@@ -26,7 +26,9 @@ export async function submitGtmRequest(data: z.infer<typeof GtmFitReportSchema>)
   }
 
   const resend = new Resend(resendApiKey);
-  const { name, email, phone, productName, website, role, roleOther, salesChannels, channelDetails, challenge, goals } = validatedFields.data;
+  const { name, email, phone, productName, website, role, roleOther, gtmStage, salesChannels, channelDetails, currency, challenge, goals } = validatedFields.data;
+
+  const currencySymbol = currency === 'inr' ? '₹' : '$';
 
   // Build a readable email body
   const channelDetailsHtml = channelDetails 
@@ -36,8 +38,8 @@ export async function submitGtmRequest(data: z.infer<typeof GtmFitReportSchema>)
         <ul style="list-style-type: none; padding: 0; margin: 0;">
           ${details.leadToProspect ? `<li>Lead to Prospect Rate: <strong>${details.leadToProspect}%</strong></li>` : ''}
           ${details.prospectToCustomer ? `<li>Prospect to Customer Rate: <strong>${details.prospectToCustomer}%</strong></li>` : ''}
-          ${details.salesCost ? `<li>Avg. Monthly Sales Cost: <strong>$${details.salesCost}</strong></li>` : ''}
-          ${details.marketingCost ? `<li>Avg. Monthly Marketing Cost: <strong>$${details.marketingCost}</strong></li>` : ''}
+          ${details.salesCost ? `<li>Avg. Monthly Sales Cost: <strong>${currencySymbol}${details.salesCost}</strong></li>` : ''}
+          ${details.marketingCost ? `<li>Avg. Monthly Marketing Cost: <strong>${currencySymbol}${details.marketingCost}</strong></li>` : ''}
         </ul>
       </div>
     `).join('')
@@ -62,6 +64,9 @@ export async function submitGtmRequest(data: z.infer<typeof GtmFitReportSchema>)
       <h3 style="color: #1976d2;">Role</h3>
       <p>${role === 'other' ? roleOther : role.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</p>
       
+      <h3 style="color: #1976d2;">GTM Stage</h3>
+      <p>${gtmStage.replace(/_/g, ' ')}</p>
+
       <h3 style="color: #1976d2;">Sales Channels</h3>
       <p>${salesChannels.join(', ')}</p>
       ${channelDetailsHtml}

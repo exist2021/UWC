@@ -28,8 +28,9 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Loader2, UploadCloud } from 'lucide-react';
+import { CheckCircle, Loader2 } from 'lucide-react';
 import { Separator } from './ui/separator';
 
 const salesChannels = [
@@ -43,6 +44,13 @@ const salesChannels = [
     { id: 'app_stores', label: 'App Stores / Marketplaces' },
     { id: 'other', label: 'Other' },
 ];
+
+const gtmStages = [
+    { id: 'exploring', label: 'I\'m just starting out and exploring channels.' },
+    { id: 'early_traction', label: 'I have some early traction and want to find scalable channels.' },
+    { id: 'optimizing', label: 'I have established channels and want to optimize my GTM strategy.' },
+];
+
 
 type FormValues = z.infer<typeof GtmFitReportSchema>;
 
@@ -62,8 +70,10 @@ export function GtmAssessmentForm() {
       website: '',
       role: undefined,
       roleOther: '',
+      gtmStage: undefined,
       salesChannels: [],
       channelDetails: {},
+      currency: 'usd',
       challenge: '',
       goals: '',
     },
@@ -225,6 +235,33 @@ export function GtmAssessmentForm() {
                     {/* Section 3: Sales Channels */}
                     <div className="space-y-6">
                        <h3 className="text-2xl font-headline text-primary border-b pb-2">Sales Channels & Leads</h3>
+                        
+                        <FormField
+                            control={form.control}
+                            name="gtmStage"
+                            render={({ field }) => (
+                            <FormItem className="space-y-3">
+                                <FormLabel className="text-lg">What is your current Go-To-Market stage?*</FormLabel>
+                                <FormControl>
+                                <RadioGroup
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                    className="flex flex-col space-y-1"
+                                >
+                                    {gtmStages.map(stage => (
+                                        <FormItem key={stage.id} className="flex items-center space-x-3 space-y-0">
+                                            <FormControl>
+                                                <RadioGroupItem value={stage.id} />
+                                            </FormControl>
+                                            <FormLabel className="font-normal text-base">{stage.label}</FormLabel>
+                                        </FormItem>
+                                    ))}
+                                </RadioGroup>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}/>
+
                         <FormField
                             control={form.control}
                             name="salesChannels"
@@ -270,6 +307,31 @@ export function GtmAssessmentForm() {
                         />
                          {selectedChannels.length > 0 && selectedChannels.length <= 2 && (
                             <div className="space-y-8 pt-4">
+                                <FormField
+                                    control={form.control}
+                                    name="currency"
+                                    render={({ field }) => (
+                                    <FormItem className="space-y-3">
+                                        <FormLabel className="text-lg">Costs are in:*</FormLabel>
+                                        <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex items-center space-x-4"
+                                        >
+                                            <FormItem className="flex items-center space-x-2 space-y-0">
+                                                <FormControl><RadioGroupItem value="usd" /></FormControl>
+                                                <FormLabel className="font-normal text-base">USD ($)</FormLabel>
+                                            </FormItem>
+                                            <FormItem className="flex items-center space-x-2 space-y-0">
+                                                <FormControl><RadioGroupItem value="inr" /></FormControl>
+                                                <FormLabel className="font-normal text-base">INR (₹)</FormLabel>
+                                            </FormItem>
+                                        </RadioGroup>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}/>
                                 {selectedChannels.map((channelId) => {
                                     const channel = salesChannels.find(c => c.id === channelId);
                                     if (!channel) return null;
@@ -314,7 +376,7 @@ export function GtmAssessmentForm() {
 
                          {selectedChannels.length > 2 && (
                             <div className="p-4 bg-blue-100/50 border border-blue-200 text-primary rounded-lg text-center">
-                                <p>You selected multiple channels. For a custom analysis, please upload your GTM data file below or contact us directly.</p>
+                                <p>You selected multiple channels. For a custom analysis, please contact us directly.</p>
                             </div>
                          )}
                     </div>
@@ -360,31 +422,6 @@ export function GtmAssessmentForm() {
                             />
                     </div>
                     
-                    <Separator />
-                    
-                    {/* Section 5: File Upload */}
-                     <div className="space-y-4">
-                         <h3 className="text-2xl font-headline text-primary border-b pb-2">Upload Supporting Documents</h3>
-                        <FormItem>
-                            <FormLabel className="text-lg">GTM Plan / Pitch Deck</FormLabel>
-                            <FormControl>
-                                <div className="relative flex items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-muted/50">
-                                    <div className="text-center">
-                                        <UploadCloud className="w-8 h-8 mx-auto text-muted-foreground" />
-                                        <p className="mt-2 text-sm text-muted-foreground">Click to upload or drag and drop</p>
-                                        <p className="text-xs text-muted-foreground">PDF, DOCX, or PPTX (Max 5MB)</p>
-                                    </div>
-                                    <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" disabled/>
-                                </div>
-                            </FormControl>
-                             <FormDescription>
-                                Optional: Upload your pitch deck, GTM plan file, or any related document. (File upload is currently disabled).
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    </div>
-
-
                     <Button
                       type="submit"
                       disabled={isPending}

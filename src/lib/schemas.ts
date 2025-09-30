@@ -31,10 +31,14 @@ export const GtmFitReportSchema = z.object({
     errorMap: () => ({ message: 'Please select your role.' }),
   }),
   roleOther: z.string().optional(),
+  gtmStage: z.enum(['exploring', 'early_traction', 'optimizing'], {
+      errorMap: () => ({ message: 'Please select your GTM stage.'}),
+  }),
   salesChannels: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: 'You have to select at least one sales channel.',
   }),
   channelDetails: z.record(z.string(), channelDetailSchema).optional(),
+  currency: z.enum(['usd', 'inr']),
   challenge: z.string().min(10, { message: 'Please describe your challenge in at least 10 characters.' }),
   goals: z.string().min(10, { message: 'Please describe your goals in at least 10 characters.' }),
 }).refine(data => {
